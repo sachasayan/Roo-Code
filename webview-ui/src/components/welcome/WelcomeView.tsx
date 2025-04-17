@@ -79,7 +79,7 @@ const WelcomeView = () => {
 									target="_blank"
 									rel="noopener noreferrer">
 									<div className="font-bold">{provider.name}</div>
-									<div className="w-16 h-16 flex items-center justify-center rounded m-2 overflow-hiddenrelative">
+									<div className="w-16 h-16 flex items-center justify-center rounded m-2 overflow-hidden relative">
 										<img
 											src={`${imagesBaseUri}/${provider.slug}.png`}
 											alt={provider.name}
