@@ -1,6 +1,6 @@
 {
 	"greeting": "Hola, sóc en Roo!",
-	"introduction": "Puc fer tot tipus de tasques gràcies als últims avenços en capacitats de codificació agent i accés a eines que em permeten crear i editar fitxers, explorar projectes complexos, utilitzar el navegador i executar ordres de terminal (amb el teu permís, és clar). Fins i tot puc utilitzar MCP per crear noves eines i ampliar les meves pròpies capacitats.",
+	"introduction": "El codi ROO és un ajudant de codificació AI intel·ligent integrat perfectament al vostre editor de codis, dissenyat per augmentar la vostra productivitat generant, depurant i explicant el codi sobre la marxa. \nPer aprofitar la potència de diversos models de IA de proveïdors com Openai, Anthropic o Google, el codi ROO requereix una clau API. \nAquesta clau actua com a credencial segura, permetent al codi ROO comunicar-se amb aquests serveis IA i accedir a les seves capacitats de processament d’idiomes per proporcionar-vos assistència de codificació en temps real, suggeriments a mida i finalitzacions de codi intel·ligent directament dins del vostre entorn de desenvolupament.",
 	"notice": "Per començar, aquesta extensió necessita un proveïdor d'API.",
 	"start": "Som-hi!",
 	"chooseProvider": "Tria un proveïdor d'API per començar:",
