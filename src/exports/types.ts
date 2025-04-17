@@ -265,7 +265,6 @@ type GlobalSettings = {
 	remoteBrowserHost?: string | undefined
 	cachedChromeHostUrl?: string | undefined
 	enableCheckpoints?: boolean | undefined
-	checkpointStorage?: ("task" | "workspace") | undefined
 	ttsEnabled?: boolean | undefined
 	ttsSpeed?: number | undefined
 	soundEnabled?: boolean | undefined
