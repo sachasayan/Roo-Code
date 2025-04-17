@@ -1,6 +1,6 @@
 {
 	"greeting": "Hallo, ich bin Roo!",
-	"introduction": "Roo Code ist ein intelligenter KI-Codierungsassistent, der nahtlos in Ihren Code-Editor integriert ist und Ihre Produktivität durch Generieren, Debuggen und Erläuterung von Code im laufenden Fliegen steigern soll. \nUm die Leistung verschiedener KI-Modelle von Anbietern wie OpenAI, Anthropic oder Google zu nutzen, erfordert Roo-Code einen API-Schlüssel. \nDieser Schlüssel fungiert als sicherer Anmeldeinformation, mit dem Roo-Code mit diesen KI-Diensten kommunizieren und auf ihre Sprachverarbeitungsfunktionen zugreifen kann, um Ihnen Echtzeit-Codierungshilfe, maßgeschneiderte Vorschläge und intelligente Code-Abschlüsse direkt in Ihrer Entwicklungsumgebung zu bieten.",
+	"introduction": "<strong>Roo Code ist der führende autonome Coding-Agent.</strong> Mach dich bereit, zu architektieren, zu coden, zu debuggen und deine Produktivität wie nie zuvor zu steigern. Um fortzufahren, benötigt Roo Code einen API-Schlüssel.",
 	"notice": "Um loszulegen, benötigt diese Erweiterung einen API-Anbieter.",
 	"start": "Los geht's!",
 	"chooseProvider": "Wähle einen API-Anbieter, um zu beginnen:",
