@@ -42,25 +42,26 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 	)
 
 	return (
-		<div
-			style={{
-				backgroundColor: "var(--vscode-editor-inactiveSelectionBackground)",
-				borderRadius: "3px",
-				padding: "12px 16px",
-				margin: "5px 15px 5px 15px",
-				position: "relative",
-				flexShrink: 0,
-			}}>
-			<VSCodeButton
-				appearance="icon"
-				onClick={hideAnnouncement}
-				title={t("chat:announcement.hideButton")}
-				style={{ position: "absolute", top: "8px", right: "8px" }}>
-				<span className="codicon codicon-close"></span>
-			</VSCodeButton>
-			<h2 style={{ margin: "0 0 8px" }}>{t("chat:announcement.title")}</h2>
+		<div className="flex flex-col justify-center absolute top-0 bottom-0 z-50 p-10 bg-black/50">
+			<div
+				style={{
+					backgroundColor: "var(--vscode-editor-inactiveSelectionBackground)",
+					borderRadius: "3px",
+					padding: "12px 16px",
+					margin: "5px 15px 5px 15px",
+					position: "relative",
+					flexShrink: 0,
+				}}>
+				<VSCodeButton
+					appearance="icon"
+					onClick={hideAnnouncement}
+					title={t("chat:announcement.hideButton")}
+					style={{ position: "absolute", top: "8px", right: "8px" }}>
+					<span className="codicon codicon-close"></span>
+				</VSCodeButton>
+				<h2 style={{ margin: "0 0 8px" }}>{t("chat:announcement.title")}</h2>
 
-			<p style={{ margin: "5px 0px" }}>{t("chat:announcement.description")}</p>
+				<p style={{ margin: "5px 0px" }}>{t("chat:announcement.description")}</p>
 
 			<h3 style={{ margin: "12px 0 5px", fontSize: "14px" }}>{t("chat:announcement.whatsNew")}</h3>
 			<ul style={{ margin: "5px 0" }}>
@@ -70,7 +71,6 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 						i18nKey="chat:announcement.feature1"
 						components={{
 							bold: <b />,
-							code: <code />,
 						}}
 					/>
 				</li>
@@ -80,7 +80,6 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 						i18nKey="chat:announcement.feature2"
 						components={{
 							bold: <b />,
-							code: <code />,
 						}}
 					/>
 				</li>
@@ -90,21 +89,21 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 						i18nKey="chat:announcement.feature3"
 						components={{
 							bold: <b />,
-							code: <code />,
 						}}
 					/>
 				</li>
 			</ul>
 
-			<p style={{ margin: "10px 0px 0px" }}>
-				<Trans
-					i18nKey="chat:announcement.detailsDiscussLinks"
-					components={{
-						discordLink: discordLink,
-						redditLink: redditLink,
-					}}
-				/>
-			</p>
+				<p style={{ margin: "10px 0px 0px" }}>
+					<Trans
+						i18nKey="chat:announcement.detailsDiscussLinks"
+						components={{
+							discordLink: discordLink,
+							redditLink: redditLink,
+						}}
+					/>
+				</p>
+			</div>
 		</div>
 	)
 }

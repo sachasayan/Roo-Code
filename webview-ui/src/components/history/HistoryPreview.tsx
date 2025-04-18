@@ -9,6 +9,7 @@ import { CopyButton } from "./CopyButton"
 import { useTaskSearch } from "./useTaskSearch"
 
 import { Trans } from "react-i18next"
+import { Coins } from "lucide-react"
 
 type HistoryPreviewProps = {
 	showHistoryView: () => void
@@ -20,20 +21,21 @@ const HistoryPreview = ({ showHistoryView }: HistoryPreviewProps) => {
 	return (
 		<>
 			<div className="flex flex-col gap-3 shrink-0 mx-5">
-				{!!tasks.length && (
-					<div className="flex items-center justify-between text-vscode-descriptionForeground">
+				{tasks.length !== 0 && (
+					<div className="flex items-center justify-between text-vscode-descriptionForeground  w-full mx-auto max-w-[600px]">
 						<div className="flex items-center gap-1">
 							<span className="codicon codicon-comment-discussion scale-90 mr-1" />
 							<span className="font-medium text-xs uppercase">{t("history:recentTasks")}</span>
 						</div>
 						<Button variant="ghost" size="sm" onClick={() => showHistoryView()} className="uppercase">
-							{t("history:viewAll")}
+							<span className="codicon codicon-history size-[1rem]" />
 						</Button>
 					</div>
 				)}
+
 				{tasks.length === 0 && (
 					<>
-						<p className="outline rounded p-4">
+						<p className="opacity-50 p-2 text-center my-0 mx-auto max-w-80">
 							<Trans
 								i18nKey="chat:onboarding"
 								components={{
@@ -49,15 +51,17 @@ const HistoryPreview = ({ showHistoryView }: HistoryPreviewProps) => {
 							/>
 						</p>
 
-						<Button size="sm" onClick={() => showHistoryView()} className="mx-auto">
+						<Button size="sm" variant="secondary" onClick={() => showHistoryView()} className="mx-auto">
+							<span className="codicon codicon-history size-[1rem]" />
 							{t("history:viewAll")}
 						</Button>
 					</>
 				)}
+
 				{tasks.slice(0, 3).map((item) => (
 					<div
 						key={item.id}
-						className="bg-vscode-toolbar-hoverBackground/50 hover:bg-vscode-toolbar-hoverBackground/75 rounded-xs relative overflow-hidden opacity-90 hover:opacity-100 cursor-pointer"
+						className="bg-vscode-editor-background rounded relative overflow-hidden cursor-pointer border border-vscode-toolbar-hoverBackground/30 hover:border-vscode-toolbar-hoverBackground/60"
 						onClick={() => vscode.postMessage({ type: "showTaskWithId", text: item.id })}>
 						<div className="flex flex-col gap-2 p-3 pt-1">
 							<div className="flex justify-between items-center">
@@ -67,39 +71,23 @@ const HistoryPreview = ({ showHistoryView }: HistoryPreviewProps) => {
 								<CopyButton itemTask={item.task} />
 							</div>
 							<div
-								className="text-vscode-descriptionForeground overflow-hidden whitespace-pre-wrap"
+								className="text-vscode-foreground overflow-hidden whitespace-pre-wrap"
 								style={{
 									display: "-webkit-box",
-									WebkitLineClamp: 3,
+									WebkitLineClamp: 2,
 									WebkitBoxOrient: "vertical",
 									wordBreak: "break-word",
 									overflowWrap: "anywhere",
 								}}>
 								{item.task}
 							</div>
-							<div className="text-xs text-vscode-descriptionForeground">
-								<span>
-									{t("history:tokens", {
-										in: formatLargeNumber(item.tokensIn || 0),
-										out: formatLargeNumber(item.tokensOut || 0),
-									})}
-								</span>
-								{!!item.cacheWrites && (
-									<>
-										{" • "}
-										<span>
-											{t("history:cache", {
-												writes: formatLargeNumber(item.cacheWrites || 0),
-												reads: formatLargeNumber(item.cacheReads || 0),
-											})}
-										</span>
-									</>
-								)}
+							<div className="flex flex-row gap-2 text-xs text-vscode-descriptionForeground">
+								<span>↑ {formatLargeNumber(item.tokensIn || 0)}</span>
+								<span>↓ {formatLargeNumber(item.tokensOut || 0)}</span>
 								{!!item.totalCost && (
-									<>
-										{" • "}
-										<span>{t("history:apiCost", { cost: item.totalCost?.toFixed(4) })}</span>
-									</>
+									<span>
+										<Coins className="inline-block size-[1em]" /> {"$" + item.totalCost?.toFixed(2)}
+									</span>
 								)}
 							</div>
 							{showAllWorkspaces && item.workspace && (
