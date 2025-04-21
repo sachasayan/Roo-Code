@@ -1,4 +1,20 @@
 import React, { memo, useState } from "react"
+import {
+	X,
+	Search,
+	ChevronDown,
+	ArrowDown,
+	ArrowUp,
+	LayoutDashboard,
+	Hash,
+	CreditCard,
+	Binary,
+	Folder,
+	Database,
+	ArrowRight,
+	Trash2,
+	ChevronRight,
+} from "lucide-react"
 import { DeleteTaskDialog } from "./DeleteTaskDialog"
 import { BatchDeleteTaskDialog } from "./BatchDeleteTaskDialog"
 import prettyBytes from "pretty-bytes"
@@ -11,6 +27,14 @@ import { formatLargeNumber, formatDate } from "@/utils/format"
 import { cn } from "@/lib/utils"
 import { Button, Checkbox } from "@/components/ui"
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select"
+import {
+	DropdownMenu,
+	DropdownMenuCheckboxItem,
+	DropdownMenuContent,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { useAppTranslation } from "@/i18n/TranslationContext"
 
 import { Tab, TabContent, TabHeader } from "../common/Tab"
@@ -32,8 +56,12 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 		sortOption,
 		setSortOption,
 		setLastNonRelevantSort,
-		showAllWorkspaces,
-		setShowAllWorkspaces,
+		// Destructure new workspace state from hook
+		availableWorkspaces,
+		workspaceFilterMode,
+		setWorkspaceFilterMode,
+		selectedWorkspaces,
+		setSelectedWorkspaces,
 	} = useTaskSearch()
 	const { t } = useAppTranslation()
 
@@ -66,12 +94,12 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 		}
 	}
 
-	const sortOptionsData: { value: SortOption; label: string; icon: string; disabled?: boolean }[] = [
-		{ value: "newest", label: t("history:newest"), icon: "codicon-arrow-down" },
-		{ value: "oldest", label: t("history:oldest"), icon: "codicon-arrow-up" },
-		{ value: "mostExpensive", label: t("history:mostExpensive"), icon: "codicon-dashboard" },
-		{ value: "mostTokens", label: t("history:mostTokens"), icon: "codicon-symbol-numeric" },
-		{ value: "mostRelevant", label: t("history:mostRelevant"), icon: "codicon-search", disabled: !searchQuery },
+	const sortOptionsData: { value: SortOption; label: string; icon: React.ElementType; disabled?: boolean }[] = [
+		{ value: "newest", label: t("history:newest"), icon: ArrowDown },
+		{ value: "oldest", label: t("history:oldest"), icon: ArrowUp },
+		{ value: "mostExpensive", label: t("history:mostExpensive"), icon: LayoutDashboard },
+		{ value: "mostTokens", label: t("history:mostTokens"), icon: Hash },
+		{ value: "mostRelevant", label: t("history:mostRelevant"), icon: Search, disabled: !searchQuery },
 	]
 
 	const selectedSortLabel = sortOptionsData.find((opt) => opt.value === sortOption)?.label
@@ -82,13 +110,9 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 				<div className="flex justify-between items-center">
 					<h3 className="text-vscode-foreground m-0">{t("history:history")}</h3>
 					<div className="flex gap-2">
-						<Button
-							variant="outline" // Keep outline variant
-							// size="icon" // Remove icon size to allow text
-							onClick={onDone}
-							title={t("history:done")}>
-							<span className="codicon codicon-close mr-1" /> {/* Keep icon, add margin */}
-							{t("history:done")} {/* Add text back */}
+						<Button variant="outline" onClick={onDone} title={t("history:done")}>
+							<X className="mr-1 h-4 w-4" />
+							{t("history:done")}
 						</Button>
 					</div>
 				</div>
@@ -106,57 +130,94 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 								setSortOption("mostRelevant")
 							}
 						}}>
-						<div
-							slot="start"
-							className="codicon codicon-search"
-							style={{ fontSize: 13, marginTop: 2.5, opacity: 0.8 }}
-						/>
+						<div slot="start">
+							<Search className="h-[13px] w-[13px] opacity-80 mt-[2.5px]" />
+						</div>
 						{searchQuery && (
-							<div
-								className="input-icon-button codicon codicon-close"
+							<button
+								className="input-icon-button flex justify-center items-center h-full"
 								aria-label="Clear search"
 								onClick={() => setSearchQuery("")}
-								slot="end"
-								style={{
-									display: "flex",
-									justifyContent: "center",
-									alignItems: "center",
-									height: "100%",
-								}}
-							/>
+								slot="end">
+								<X className="h-4 w-4" />
+							</button>
 						)}
 					</VSCodeTextField>
+					{/* Combined Row for Workspace MultiSelect and Sort Dropdown */}
 					<div className="flex justify-between items-center gap-4">
-						<div className="flex items-center gap-2 flex-shrink-0">
-							<Checkbox
-								id="show-all-workspaces-view"
-								checked={showAllWorkspaces}
-								onCheckedChange={(checked) => setShowAllWorkspaces(checked === true)}
-								variant="description"
-							/>
-							<label htmlFor="show-all-workspaces-view" className="text-vscode-foreground cursor-pointer">
-								{t("history:showAllWorkspaces")}
-							</label>
-						</div>
+						{/* Workspace MultiSelect Dropdown */}
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<Button variant="outline" className="flex-shrink-0 min-w-[150px] justify-start">
+									{/* Dynamic Trigger Text */}
+									<span>
+										{workspaceFilterMode === "current" && "Workspace: Current"}
+										{workspaceFilterMode === "all" && "Workspace: All"}
+										{workspaceFilterMode === "selected" &&
+											(selectedWorkspaces.length === 0
+												? "Workspace: Current"
+												: selectedWorkspaces.length === 1
+													? `Workspace: ${selectedWorkspaces[0].split(/[\\/]/).pop() || selectedWorkspaces[0]}`
+													: `Workspaces: ${selectedWorkspaces.length} selected`)}
+									</span>
+									<ChevronDown className="ml-auto h-4 w-4" />
+								</Button>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent className="w-56">
+								<DropdownMenuLabel>Filter by Workspace</DropdownMenuLabel>
+								<DropdownMenuSeparator />
+								<DropdownMenuCheckboxItem
+									checked={workspaceFilterMode === "current"}
+									onCheckedChange={() => setWorkspaceFilterMode("current")}>
+									Current Workspace
+								</DropdownMenuCheckboxItem>
+								<DropdownMenuCheckboxItem
+									checked={workspaceFilterMode === "all"}
+									onCheckedChange={() => setWorkspaceFilterMode("all")}>
+									All Workspaces
+								</DropdownMenuCheckboxItem>
+								{availableWorkspaces.length > 0 && <DropdownMenuSeparator />}
+								{availableWorkspaces.map((ws) => (
+									<DropdownMenuCheckboxItem
+										key={ws}
+										title={ws}
+										checked={selectedWorkspaces.includes(ws)}
+										onCheckedChange={(checked) => {
+											setWorkspaceFilterMode("selected")
+											setSelectedWorkspaces((prev) =>
+												checked
+													? [...prev, ws]
+													: prev.filter((selectedWs) => selectedWs !== ws),
+											)
+										}}>
+										{ws.split(/[\\/]/).pop() || ws}
+									</DropdownMenuCheckboxItem>
+								))}
+							</DropdownMenuContent>
+						</DropdownMenu>
 
+						{/* Sort Dropdown */}
 						<div className="flex-grow min-w-[180px]">
 							<Select value={sortOption} onValueChange={(value) => setSortOption(value as SortOption)}>
 								<SelectTrigger className="w-full" data-testid="history-sort-trigger">
 									<span>Sort: {selectedSortLabel ?? t("history:sortByPlaceholder")}</span>
 								</SelectTrigger>
 								<SelectContent>
-									{sortOptionsData.map((option) => (
-										<SelectItem
-											key={option.value}
-											value={option.value}
-											disabled={option.disabled}
-											data-testid={`history-sort-item-${option.value}`}>
-											<div className="flex items-center gap-2">
-												<span className={`codicon ${option.icon}`} />
-												<span>{option.label}</span>
-											</div>
-										</SelectItem>
-									))}
+									{sortOptionsData.map((option) => {
+										const IconComponent = option.icon
+										return (
+											<SelectItem
+												key={option.value}
+												value={option.value}
+												disabled={option.disabled}
+												data-testid={`history-sort-item-${option.value}`}>
+												<div className="flex items-center gap-2">
+													<IconComponent className="h-4 w-4" />
+													<span>{option.label}</span>
+												</div>
+											</SelectItem>
+										)
+									})}
 								</SelectContent>
 							</Select>
 						</div>
@@ -183,10 +244,7 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 
 			<TabContent className="p-0">
 				<Virtuoso
-					style={{
-						flexGrow: 1,
-						overflowY: "scroll",
-					}}
+					className="flex-grow overflow-y-scroll"
 					data={tasks}
 					data-testid="virtuoso-container"
 					initialTopMostItemIndex={0}
@@ -208,47 +266,27 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 							}}>
 							<div className="flex items-stretch gap-6">
 								<div className="flex-1 min-w-0 p-6 pr-0">
-									<div className="flex justify-between items-center mb-2">
-										<span className="text-vscode-descriptionForeground font-medium text-sm uppercase">
-											{formatDate(item.ts)}
-										</span>
-									</div>
 									<div
-										style={{
-											fontSize: "var(--vscode-font-size)",
-											color: "var(--vscode-foreground)",
-											display: "-webkit-box",
-											WebkitLineClamp: 3,
-											WebkitBoxOrient: "vertical",
-											overflow: "hidden",
-											whiteSpace: "pre-wrap",
-											wordBreak: "break-word",
-											overflowWrap: "anywhere",
-										}}
+										className="mb-3 text-vscode-font-size text-vscode-foreground line-clamp-3 overflow-hidden whitespace-pre-wrap break-words break-anywhere"
 										data-testid="task-content"
 										dangerouslySetInnerHTML={{ __html: item.task }}
 									/>
-									<div className="flex flex-col gap-2 mt-2 text-xs text-vscode-descriptionForeground">
+
+									<div className="flex flex-col gap-2 text-xs text-vscode-descriptionForeground">
 										<div className="flex items-center flex-wrap gap-x-4 gap-y-1">
 											<div className="flex items-center gap-1 flex-wrap">
 												<span
 													data-testid="tokens-in"
 													className="flex items-center gap-1"
 													title={t("history:tokensInTitle")}>
-													<i
-														className="codicon codicon-arrow-up"
-														style={{ fontSize: "12px", fontWeight: "bold" }}
-													/>
+													<ArrowDown className="h-[12px] w-[12px] font-bold" />
 													{formatLargeNumber(item.tokensIn || 0)}
 												</span>
 												<span
 													data-testid="tokens-out"
 													className="flex items-center gap-1"
 													title={t("history:tokensOutTitle")}>
-													<i
-														className="codicon codicon-arrow-down"
-														style={{ fontSize: "12px", fontWeight: "bold" }}
-													/>
+													<ArrowDown className="h-[12px] w-[12px] font-bold" />
 													{formatLargeNumber(item.tokensOut || 0)}
 												</span>
 											</div>
@@ -257,7 +295,7 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 													className="flex items-center gap-1"
 													data-testid="cost-container"
 													title={t("history:apiCostLabel")}>
-													<i className="codicon codicon-credit-card" />
+													<CreditCard className="h-4 w-4" />
 													<span>${item.totalCost?.toFixed(2)}</span>
 												</div>
 											)}
@@ -266,106 +304,81 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 													className="flex items-center gap-1"
 													data-testid="size-container"
 													title={t("history:fileSizeTitle")}>
-													<i className="codicon codicon-file-binary" />
+													<Binary className="h-4 w-4" />
 													<span>{prettyBytes(item.size)}</span>
 												</div>
 											)}
+											{(workspaceFilterMode === "all" || workspaceFilterMode === "selected") &&
+												item.workspace && (
+													<div
+														className="flex flex-row gap-1 items-center"
+														title={item.workspace}>
+														<Folder className="h-4 w-4" />
+														<span>
+															{item.workspace.split(/[\\/]/).pop() || item.workspace}
+														</span>
+													</div>
+												)}
 										</div>
 
 										{!!item.cacheWrites && (
 											<div
 												data-testid="cache-container"
-												style={{
-													display: "flex",
-													alignItems: "center",
-													gap: "4px",
-													flexWrap: "wrap",
-												}}>
-												<span
-													style={{
-														fontWeight: 500,
-														color: "var(--vscode-descriptionForeground)",
-													}}>
+												className="flex items-center gap-1 flex-wrap">
+												<span className="font-medium text-vscode-descriptionForeground">
 													{t("history:cacheLabel")}
 												</span>
 												<span
 													data-testid="cache-writes"
-													style={{
-														display: "flex",
-														alignItems: "center",
-														gap: "3px",
-														color: "var(--vscode-descriptionForeground)",
-													}}>
-													<i
-														className="codicon codicon-database"
-														style={{
-															fontSize: "12px",
-															fontWeight: "bold",
-															marginBottom: "-1px",
-														}}
-													/>
-													+{formatLargeNumber(item.cacheWrites || 0)}
+													className="flex items-center gap-[3px] text-vscode-descriptionForeground">
+													<Database className="h-[12px] w-[12px] font-bold -mb-px" />+
+													{formatLargeNumber(item.cacheWrites || 0)}
 												</span>
 												<span
 													data-testid="cache-reads"
-													style={{
-														display: "flex",
-														alignItems: "center",
-														gap: "3px",
-														color: "var(--vscode-descriptionForeground)",
-													}}>
-													<i
-														className="codicon codicon-arrow-right"
-														style={{
-															fontSize: "12px",
-															fontWeight: "bold",
-															marginBottom: 0,
-														}}
-													/>
+													className="flex items-center gap-[3px] text-vscode-descriptionForeground">
+													<ArrowRight className="h-[12px] w-[12px] font-bold mb-0" />
 													{formatLargeNumber(item.cacheReads || 0)}
 												</span>
 											</div>
 										)}
-
-										{showAllWorkspaces && item.workspace && (
-											<div className="flex flex-row gap-1 text-vscode-descriptionForeground text-xs items-center">
-												<span className="codicon codicon-folder" />
-												<span>{item.workspace}</span>
+									</div>
+									<div className="flex justify-between items-center mt-1">
+										{" "}
+										<span className="text-vscode-descriptionForeground font-medium text-sm uppercase flex-shrink-0 mr-4">
+											{formatDate(item.ts)}
+										</span>
+										<div
+											className={cn(
+												"flex items-center gap-0 transition-opacity duration-100 ml-auto",
+												selectedTaskIds.includes(item.id)
+													? "opacity-100"
+													: "opacity-0 group-hover:opacity-100",
+											)}>
+											<Button
+												variant="ghost"
+												size="icon"
+												title={t("history:deleteTaskTitle")}
+												data-testid="delete-task-button"
+												onClick={(e) => {
+													e.stopPropagation()
+													if (e.shiftKey) {
+														vscode.postMessage({ type: "deleteTaskWithId", text: item.id })
+													} else {
+														setDeleteTaskId(item.id)
+													}
+												}}>
+												<Trash2 className="h-4 w-4" />
+											</Button>
+											<div onClick={(e) => e.stopPropagation()}>
+												<CopyButton itemTask={item.task} />
 											</div>
-										)}
+											<div onClick={(e) => e.stopPropagation()}>
+												<ExportButton itemId={item.id} />
+											</div>
+										</div>
 									</div>
 								</div>
-
-								<div
-									className={cn(
-										"flex items-center gap-0 transition-opacity duration-100",
-										selectedTaskIds.includes(item.id)
-											? "opacity-100"
-											: "opacity-0 group-hover:opacity-100",
-									)}>
-									<Button
-										variant="ghost"
-										size="icon"
-										title={t("history:deleteTaskTitle")}
-										data-testid="delete-task-button"
-										onClick={(e) => {
-											e.stopPropagation()
-											if (e.shiftKey) {
-												vscode.postMessage({ type: "deleteTaskWithId", text: item.id })
-											} else {
-												setDeleteTaskId(item.id)
-											}
-										}}>
-										<span className="codicon codicon-trash" />
-									</Button>
-									<div onClick={(e) => e.stopPropagation()}>
-										<CopyButton itemTask={item.task} />
-									</div>
-									<div onClick={(e) => e.stopPropagation()}>
-										<ExportButton itemId={item.id} />
-									</div>
-								</div>
-
 								<div className="relative">
 									<Button
 										variant="ghost"
@@ -383,7 +396,7 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 											e.stopPropagation()
 											vscode.postMessage({ type: "showTaskWithId", text: item.id })
 										}}>
-										<span className="codicon codicon-chevron-right" />
+										<ChevronRight className="h-4 w-4" />
 									</Button>
 								</div>
 							</div>
