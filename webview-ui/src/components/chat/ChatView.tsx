@@ -1257,7 +1257,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 							</div>
 						</div>
 					)}
-					<div className={`m-auto ${isExpanded ? "mt-0" : ""} p-10 pt-5"`}>
+					<div className={` flex flex-col gap-4 m-auto ${isExpanded ? "mt-0" : ""} p-10 pt-5"`}>
 						{showAnnouncement && <Announcement version={version} hideAnnouncement={hideAnnouncement} />}
 
 						<RooHero />

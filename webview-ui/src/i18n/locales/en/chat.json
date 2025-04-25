@@ -73,7 +73,7 @@
 			"description": "Split tasks into smaller, manageable parts."
 		},
 		"stickyModels": {
-			"title": "Sticky Models",
+			"title": "Sticky Modes",
 			"description": "Each mode remembers your last used model"
 		},
 		"tools": {
@@ -232,19 +232,5 @@
 			"close": "Close browser"
 		}
 	},
-	"systemPromptWarning": "WARNING: Custom system prompt override active. This can severely break functionality and cause unpredictable behavior.",
-	"rooTips": {
-		"boomerangTasks": {
-			"title": "Boomerang Tasks",
-			"description": "Orchestrate complex workflows with subtasks"
-		},
-		"stickyModels": {
-			"title": "Sticky Models",
-			"description": "Each mode remembers your last used model"
-		},
-		"tools": {
-			"title": "Tools",
-			"description": "Allow the AI to solve problems by browsing the web, running commands, and more."
-		}
-	}
+	"systemPromptWarning": "WARNING: Custom system prompt override active. This can severely break functionality and cause unpredictable behavior."
 }

@@ -2,9 +2,7 @@ import { memo } from "react"
 
 import { vscode } from "@/utils/vscode"
 import { formatLargeNumber, formatDate } from "@/utils/format"
-import { Button } from "@/components/ui"
 
-import { useAppTranslation } from "@src/i18n/TranslationContext"
 import { CopyButton } from "./CopyButton"
 import { useTaskSearch } from "./useTaskSearch"
 
@@ -13,7 +11,6 @@ import { Coins } from "lucide-react"
 
 const HistoryPreview = () => {
 	const { tasks, showAllWorkspaces } = useTaskSearch()
-	const { t } = useAppTranslation()
 
 	return (
 		<>
@@ -35,18 +32,6 @@ const HistoryPreview = () => {
 								}}
 							/>
 						</p>
-
-						{/* The button to show history view will be moved to ChatView */}
-						<Button
-							size="sm"
-							variant="secondary"
-							onClick={() => {
-								/* TODO: Implement or remove */
-							}}
-							className="mx-auto">
-							<span className="codicon codicon-history size-[1rem]" />
-							{t("history:viewAll")}
-						</Button>
 					</>
 				)}
 
@@ -94,14 +79,6 @@ const HistoryPreview = () => {
 								</div>
 							</div>
 						))}
-						{/* The link to show history view will be moved to ChatView */}
-						<div
-							className="text-center text-xs text-vscode-descriptionForeground cursor-pointer hover:text-vscode-foreground mt-1"
-							onClick={() => {
-								/* TODO: Implement or remove */
-							}}>
-							{t("history:viewAll")} ({tasks.length})
-						</div>
 					</>
 				)}
 			</div>
