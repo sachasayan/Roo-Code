@@ -53,10 +53,24 @@ export class ContextProxy {
 	public async initialize() {
 		for (const key of GLOBAL_STATE_KEYS) {
 			try {
+				// Revert to original assignment
 				this.stateCache[key] = this.originalContext.globalState.get(key)
 			} catch (error) {
 				logger.error(`Error loading global ${key}: ${error instanceof Error ? error.message : String(error)}`)
 			}
+		}
+
+		// Explicitly load historyPreviewCollapsed after the main loop
+		try {
+			const historyCollapsedValue = this.originalContext.globalState.get("historyPreviewCollapsed")
+			if (typeof historyCollapsedValue === "boolean") {
+				this.stateCache.historyPreviewCollapsed = historyCollapsedValue
+			}
+			// No logging needed here anymore
+		} catch (error) {
+			logger.error(
+				`Error loading global historyPreviewCollapsed: ${error instanceof Error ? error.message : String(error)}`,
+			)
 		}
 
 		const promises = SECRET_STATE_KEYS.map(async (key) => {
