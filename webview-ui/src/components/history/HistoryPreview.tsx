@@ -35,15 +35,15 @@ const HistoryPreview = ({ showHistoryView }: HistoryPreviewProps) => {
 		<>
 			<div className="flex flex-col gap-3 shrink-0 mx-5">
 				{tasks.length !== 0 && (
-					<div className="flex items-center justify-between text-vscode-descriptionForeground  w-full mx-auto max-w-[600px]">
+					<div className="flex items-center justify-between text-vscode-descriptionForeground w-full mx-auto max-w-[600px]">
 						{/* Keep the history button, but maybe it should just show the full view? Or remove it if header is clicked? Let's keep it for now. */}
 						<div className="font-bold">{t("chat:greeting")}</div>
 
 						<div className="flex items-center gap-1 cursor-pointer" onClick={toggleExpanded}>
-							<span className={`codicon codicon-chevron-${isExpanded ? "up" : "down"} scale-90`} />
 							<span className="font-medium text-xs uppercase">
 								{isExpanded ? "" : t("history:recentTasks")}
 							</span>
+							<span className={`codicon codicon-chevron-${isExpanded ? "up" : "down"} scale-90`} />
 						</div>
 					</div>
 				)}
