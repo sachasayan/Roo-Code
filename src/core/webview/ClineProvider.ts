@@ -1244,6 +1244,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			language,
 			maxReadFileLine,
 			terminalCompressProgressBar,
+			historyPreviewCollapsed
 		} = await this.getState()
 
 		const telemetryKey = process.env.POSTHOG_API_KEY
@@ -1329,6 +1330,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			settingsImportedAt: this.settingsImportedAt,
 			terminalCompressProgressBar: terminalCompressProgressBar ?? true,
 			hasSystemPromptOverride,
+			historyPreviewCollapsed: historyPreviewCollapsed ?? false,
 		}
 	}
 
@@ -1417,6 +1419,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			telemetrySetting: stateValues.telemetrySetting || "unset",
 			showRooIgnoredFiles: stateValues.showRooIgnoredFiles ?? true,
 			maxReadFileLine: stateValues.maxReadFileLine ?? 500,
+			historyPreviewCollapsed: stateValues.historyPreviewCollapsed ?? false, 
 		}
 	}
 

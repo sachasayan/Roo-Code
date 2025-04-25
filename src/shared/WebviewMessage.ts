@@ -126,6 +126,7 @@ export interface WebviewMessage {
 		| "maxReadFileLine"
 		| "searchFiles"
 		| "toggleApiConfigPin"
+		| "setHistoryPreviewCollapsed"
 	text?: string
 	disabled?: boolean
 	askResponse?: ClineAskResponse
@@ -152,6 +153,7 @@ export interface WebviewMessage {
 	requestId?: string
 	ids?: string[]
 	hasSystemPromptOverride?: boolean
+	historyPreviewCollapsed?: boolean
 }
 
 export const checkoutDiffPayloadSchema = z.object({
