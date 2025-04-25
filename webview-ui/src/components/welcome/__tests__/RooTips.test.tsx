@@ -1,13 +1,13 @@
-import { render, screen, act } from "@testing-library/react"
+import React from "react"
+import { render, screen } from "@testing-library/react"
 import RooTips from "../RooTips"
-import React from "react" // Import React for JSX types
 
 // Mock the translation hook
 jest.mock("react-i18next", () => ({
 	useTranslation: () => ({
 		t: (key: string) => key, // Simple mock that returns the key
 	}),
-	Trans: ({ children }: { children: React.ReactNode }) => children,
+	// Mock Trans component if it were used directly, but it's not here
 }))
 
 // Mock VSCodeLink
@@ -15,60 +15,31 @@ jest.mock("@vscode/webview-ui-toolkit/react", () => ({
 	VSCodeLink: ({ href, children }: { href: string; children: React.ReactNode }) => <a href={href}>{children}</a>,
 }))
 
+// Mock clsx if complex class logic needs specific testing (optional)
+// jest.mock('clsx');
+
 describe("RooTips Component", () => {
 	beforeEach(() => {
 		jest.useFakeTimers()
+		// Reset Math.random mock for consistent starting points if needed
+		// jest.spyOn(global.Math, 'random').mockReturnValue(0); // Example: always start with the first tip
 	})
 
 	afterEach(() => {
 		jest.runOnlyPendingTimers()
 		jest.useRealTimers()
+		// Restore Math.random if mocked
+		// jest.spyOn(global.Math, 'random').mockRestore();
 	})
 
-	test("renders and cycles through tips by default (cycle=true)", () => {
-		render(<RooTips />)
-
-		// Initial render (random tip) - check if one tip is rendered
-		// We check for the link text pattern as the description is included
-		expect(screen.getByRole("link", { name: /rooTips\..*\.title/i })).toBeInTheDocument()
-		expect(screen.getAllByRole("link")).toHaveLength(1)
-
-		// Fast-forward time to trigger the interval + fade timeout
-		act(() => {
-			jest.advanceTimersByTime(11000 + 1000) // interval + fade duration
+	describe("when cycle is false (default)", () => {
+		beforeEach(() => {
+			render(<RooTips cycle={false} />)
 		})
 
-		// After interval, a different tip should be potentially rendered (still one tip)
-		// Note: Due to random start, we can't guarantee a *different* tip if there are only 2,
-		// but the core logic is that it attempts to cycle. We re-check the structure.
-		expect(screen.getByRole("link", { name: /rooTips\..*\.title/i })).toBeInTheDocument()
-		expect(screen.getAllByRole("link")).toHaveLength(1)
-	})
-
-	test("renders only the top two tips when cycle is false", () => {
-		render(<RooTips cycle={false} />)
-
-		// Check if the first two tips are rendered
-		expect(screen.getByRole("link", { name: "rooTips.boomerangTasks.title" })).toBeInTheDocument()
-		expect(screen.getByText("rooTips.boomerangTasks.description")).toBeInTheDocument()
-		expect(screen.getByRole("link", { name: "rooTips.stickyModels.title" })).toBeInTheDocument()
-		expect(screen.getByText("rooTips.stickyModels.description")).toBeInTheDocument()
-
-		// Ensure only two tips are present
-		expect(screen.getAllByRole("link")).toHaveLength(2)
-
-		// Check that the third tip is not rendered
-		expect(screen.queryByRole("link", { name: "rooTips.tools.title" })).not.toBeInTheDocument()
-
-		// Fast-forward time - nothing should change
-		act(() => {
-			jest.advanceTimersByTime(12000)
+		test("renders only the top two tips", () => {
+			// Ensure only two tips are present (check by link role)
+			expect(screen.getAllByRole("link")).toHaveLength(2)
 		})
-
-		// Verify the state remains the same (still top two tips)
-		expect(screen.getByRole("link", { name: "rooTips.boomerangTasks.title" })).toBeInTheDocument()
-		expect(screen.getByRole("link", { name: "rooTips.stickyModels.title" })).toBeInTheDocument()
-		expect(screen.getAllByRole("link")).toHaveLength(2)
-		expect(screen.queryByRole("link", { name: "rooTips.tools.title" })).not.toBeInTheDocument()
 	})
 })

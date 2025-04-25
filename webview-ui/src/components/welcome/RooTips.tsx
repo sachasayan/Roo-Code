@@ -28,7 +28,7 @@ interface RooTipsProps {
 	cycle?: boolean
 }
 
-const RooTips = ({ cycle = true }: RooTipsProps) => {
+const RooTips = ({ cycle = false }: RooTipsProps) => {
 	const { t } = useTranslation("chat")
 	const [currentTipIndex, setCurrentTipIndex] = useState(Math.floor(Math.random() * tips.length))
 	const [isFading, setIsFading] = useState(false)
