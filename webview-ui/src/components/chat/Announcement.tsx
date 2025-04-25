@@ -42,7 +42,7 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 	)
 
 	return (
-		<div className="flex flex-col justify-center absolute top-0 bottom-0 z-50 p-10 bg-black/50">
+		<div className="flex flex-col justify-center absolute top-0 bottom-0 left-0 right-0 z-50 p-10 bg-black/50">
 			<div
 				style={{
 					backgroundColor: "var(--vscode-editor-inactiveSelectionBackground)",
@@ -63,36 +63,36 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 
 				<p style={{ margin: "5px 0px" }}>{t("chat:announcement.description")}</p>
 
-			<h3 style={{ margin: "12px 0 5px", fontSize: "14px" }}>{t("chat:announcement.whatsNew")}</h3>
-			<ul style={{ margin: "5px 0" }}>
-				<li>
-					•{" "}
-					<Trans
-						i18nKey="chat:announcement.feature1"
-						components={{
-							bold: <b />,
-						}}
-					/>
-				</li>
-				<li>
-					•{" "}
-					<Trans
-						i18nKey="chat:announcement.feature2"
-						components={{
-							bold: <b />,
-						}}
-					/>
-				</li>
-				<li>
-					•{" "}
-					<Trans
-						i18nKey="chat:announcement.feature3"
-						components={{
-							bold: <b />,
-						}}
-					/>
-				</li>
-			</ul>
+				<h3 style={{ margin: "12px 0 5px", fontSize: "14px" }}>{t("chat:announcement.whatsNew")}</h3>
+				<ul style={{ margin: "5px 0" }}>
+					<li>
+						•{" "}
+						<Trans
+							i18nKey="chat:announcement.feature1"
+							components={{
+								bold: <b />,
+							}}
+						/>
+					</li>
+					<li>
+						•{" "}
+						<Trans
+							i18nKey="chat:announcement.feature2"
+							components={{
+								bold: <b />,
+							}}
+						/>
+					</li>
+					<li>
+						•{" "}
+						<Trans
+							i18nKey="chat:announcement.feature3"
+							components={{
+								bold: <b />,
+							}}
+						/>
+					</li>
+				</ul>
 
 				<p style={{ margin: "10px 0px 0px" }}>
 					<Trans
