@@ -1243,6 +1243,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			showRooIgnoredFiles,
 			language,
 			maxReadFileLine,
+			historyPreviewCollapsed, // Destructure the new state value
 		} = await this.getState()
 
 		const telemetryKey = process.env.POSTHOG_API_KEY
@@ -1327,6 +1328,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			maxReadFileLine: maxReadFileLine ?? 500,
 			settingsImportedAt: this.settingsImportedAt,
 			hasSystemPromptOverride,
+			historyPreviewCollapsed: historyPreviewCollapsed ?? false, // Add to the returned state object
 		}
 	}
 
@@ -1414,6 +1416,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			telemetrySetting: stateValues.telemetrySetting || "unset",
 			showRooIgnoredFiles: stateValues.showRooIgnoredFiles ?? true,
 			maxReadFileLine: stateValues.maxReadFileLine ?? 500,
+			historyPreviewCollapsed: stateValues.historyPreviewCollapsed ?? false, // Add to the internal getState as well
 		}
 	}
 
