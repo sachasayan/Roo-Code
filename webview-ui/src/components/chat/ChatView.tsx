@@ -38,6 +38,7 @@ import ChatTextArea from "./ChatTextArea"
 import TaskHeader from "./TaskHeader"
 import AutoApproveMenu from "./AutoApproveMenu"
 import SystemPromptWarning from "./SystemPromptWarning"
+import { useTaskSearch } from "../history/useTaskSearch"
 interface ChatViewProps {
 	isHidden: boolean
 	showAnnouncement: boolean
@@ -82,7 +83,22 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		customModes,
 		telemetrySetting,
 		hasSystemPromptOverride,
+		historyPreviewCollapsed, // Added historyPreviewCollapsed
 	} = useExtensionState()
+
+	const { tasks } = useTaskSearch()
+
+	// Initialize expanded state based on the persisted setting (default to expanded if undefined)
+	const [isExpanded, setIsExpanded] = useState(
+		historyPreviewCollapsed === undefined ? true : !historyPreviewCollapsed,
+	)
+
+	const toggleExpanded = useCallback(() => {
+		const newState = !isExpanded
+		setIsExpanded(newState)
+		// Send message to extension to persist the new collapsed state
+		vscode.postMessage({ type: "setHistoryPreviewCollapsed", bool: !newState })
+	}, [isExpanded])
 
 	//const task = messages.length > 0 ? (messages[0].say === "task" ? messages[0] : undefined) : undefined) : undefined
 	const task = useMemo(() => messages.at(0), [messages]) // leaving this less safe version here since if the first message is not a task, then the extension is in a bad state and needs to be debugged (see Cline.abort)
@@ -1227,18 +1243,31 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 					)}
 				</>
 			) : (
-				<>
-					{taskHistory.length > 0 && <HistoryPreview showHistoryView={showHistoryView} />}
-					<div className="flex-1 min-h-0 overflow-y-auto flex flex-col justify-center p-10 gap-1 pb-[10px]">
-						{/* Show the task history if there are any for this workspace. */}
-
-						{telemetrySetting === "unset" && <TelemetryBanner />}
+				<div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-4">
+					{/* Moved Task Bar Header Here */}
+					{tasks.length !== 0 && (
+						<div className="flex items-center justify-end text-vscode-descriptionForeground w-full mx-auto max-w-[600px] px-5 pt-3">
+							<div className="flex items-center gap-1 cursor-pointer" onClick={toggleExpanded}>
+								{tasks.length < 10 && (
+									<span className={`font-medium text-xs `}>{t("history:recentTasks")}</span>
+								)}
+								<span
+									className={`codicon  ${isExpanded ? "codicon-eye" : "codicon-eye-closed"} scale-90`}
+								/>
+							</div>
+						</div>
+					)}
+					<div className={`m-auto ${isExpanded ? "mt-0" : ""} p-10 pt-5"`}>
 						{showAnnouncement && <Announcement version={version} hideAnnouncement={hideAnnouncement} />}
 
-						{/* Always show the hero. */}
 						<RooHero />
-						{/* If the user has little task history, we can show the onboarding message */}
-						{taskHistory.length < 10 && (
+						{/* Always show the hero. */}
+
+						{telemetrySetting === "unset" && <TelemetryBanner />}
+						{/* Show the task history preview if expanded and tasks exist */}
+						{taskHistory.length > 0 && isExpanded && <HistoryPreview />}
+						{/* If the user has no task history, we can show the onboarding message */}
+						{taskHistory.length > -1 && (
 							<p className="ext-vscode-editor-foreground leading-tight font-vscode text-center">
 								<Trans
 									i18nKey="chat:about"
@@ -1255,11 +1284,10 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 								/>
 							</p>
 						)}
-
-						{/* Finally, always show the tips */}
-						<RooTips cycle={false} />
+						{/* Finally, if there less than 3 tasks, we can show the tips */}
+						{tasks.length > -1 && <RooTips cycle={false} />}
 					</div>
-				</>
+				</div>
 			)}
 
 			{/* 
