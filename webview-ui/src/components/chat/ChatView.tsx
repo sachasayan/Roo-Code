@@ -38,8 +38,6 @@ import ChatTextArea from "./ChatTextArea"
 import TaskHeader from "./TaskHeader"
 import AutoApproveMenu from "./AutoApproveMenu"
 import SystemPromptWarning from "./SystemPromptWarning"
-
-import { useTaskSearch } from "@/components/history/useTaskSearch"
 interface ChatViewProps {
 	isHidden: boolean
 	showAnnouncement: boolean
@@ -85,8 +83,6 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		telemetrySetting,
 		hasSystemPromptOverride,
 	} = useExtensionState()
-
-	const { tasks } = useTaskSearch()
 
 	//const task = messages.length > 0 ? (messages[0].say === "task" ? messages[0] : undefined) : undefined) : undefined
 	const task = useMemo(() => messages.at(0), [messages]) // leaving this less safe version here since if the first message is not a task, then the extension is in a bad state and needs to be debugged (see Cline.abort)
@@ -1231,36 +1227,39 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 					)}
 				</>
 			) : (
-				<div className="flex-1 min-h-0 overflow-y-auto flex flex-col justify-center p-10 gap-4 pb-[10px]">
-					{telemetrySetting === "unset" && <TelemetryBanner />}
-					{showAnnouncement && <Announcement version={version} hideAnnouncement={hideAnnouncement} />}
-
-					{/* Always show the hero. */}
-					<RooHero />
-					{/* If the user has no task history, we can show the onboarding message */}
-					{!taskHistory.length && (
-						<p className="ext-vscode-editor-foreground leading-tight font-vscode text-center">
-							<Trans
-								i18nKey="chat:about"
-								components={{
-									DocsLink: (
-										<a
-											href="https://docs.roocode.com/getting-started/your-first-task"
-											target="_blank"
-											rel="noopener noreferrer">
-											the docs
-										</a>
-									),
-								}}
-							/>
-						</p>
-					)}
-
-					{/* Show the task history if there are any for this workspace. */}
+				<>
 					{taskHistory.length > 0 && <HistoryPreview showHistoryView={showHistoryView} />}
-					{/* Finally, if there less than 3 tasks, we can show the tips */}
-					{tasks.length < 3 && <RooTips cycle={!!(tasks.length < 3 && taskHistory.length > 0)} />}
-				</div>
+					<div className="flex-1 min-h-0 overflow-y-auto flex flex-col justify-center p-10 gap-1 pb-[10px]">
+						{/* Show the task history if there are any for this workspace. */}
+
+						{telemetrySetting === "unset" && <TelemetryBanner />}
+						{showAnnouncement && <Announcement version={version} hideAnnouncement={hideAnnouncement} />}
+
+						{/* Always show the hero. */}
+						<RooHero />
+						{/* If the user has little task history, we can show the onboarding message */}
+						{taskHistory.length < 10 && (
+							<p className="ext-vscode-editor-foreground leading-tight font-vscode text-center">
+								<Trans
+									i18nKey="chat:about"
+									components={{
+										DocsLink: (
+											<a
+												href="https://docs.roocode.com/getting-started/your-first-task"
+												target="_blank"
+												rel="noopener noreferrer">
+												the docs
+											</a>
+										),
+									}}
+								/>
+							</p>
+						)}
+
+						{/* Finally, always show the tips */}
+						<RooTips cycle={false} />
+					</div>
+				</>
 			)}
 
 			{/* 
