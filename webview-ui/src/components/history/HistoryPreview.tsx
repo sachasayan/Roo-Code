@@ -14,7 +14,7 @@ const HistoryPreview = () => {
 
 	return (
 		<>
-			<div className="flex flex-col gap-3 shrink-0 mx-5">
+			<div className="flex flex-col gap-3 shrink-0 ">
 				{tasks.length === 0 && (
 					<>
 						<p className="opacity-50 p-2 text-center my-0 mx-auto max-w-80">
