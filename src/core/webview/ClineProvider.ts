@@ -1246,6 +1246,8 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			historyPreviewCollapsed, // Destructure the new state value
 		} = await this.getState()
 
+		this.log(`[Debug] getState historyPreviewCollapsed: ${historyPreviewCollapsed}`) // Add logging here
+
 		const telemetryKey = process.env.POSTHOG_API_KEY
 		const machineId = vscode.env.machineId
 		const allowedCommands = vscode.workspace.getConfiguration("roo-cline").get<string[]>("allowedCommands") || []

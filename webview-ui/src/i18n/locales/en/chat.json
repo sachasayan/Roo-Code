@@ -67,6 +67,20 @@
 	"scrollToBottom": "Scroll to bottom of chat",
 	"about": "Generate, refactor, and debug code with AI assistance.<br />Check out our <DocsLink>documentation</DocsLink> to learn more.",
 	"onboarding": "Your task list in this workspace is empty.",
+	"rooTips": {
+		"boomerangTasks": {
+			"title": "Boomerang Tasks",
+			"description": "Split tasks into smaller, manageable parts."
+		},
+		"stickyModels": {
+			"title": "Sticky Models",
+			"description": "Each mode remembers your last used model"
+		},
+		"tools": {
+			"title": "Tools",
+			"description": "Allow the AI to solve problems by browsing the web, running commands, and more."
+		}
+	},
 	"selectMode": "Select mode for interaction",
 	"selectApiConfig": "Select API configuration",
 	"enhancePrompt": "Enhance prompt with additional context",

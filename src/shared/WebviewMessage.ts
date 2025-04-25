@@ -125,6 +125,7 @@ export interface WebviewMessage {
 		| "maxReadFileLine"
 		| "searchFiles"
 		| "toggleApiConfigPin"
+		| "setHistoryPreviewCollapsed" // Add the missing type here
 	text?: string
 	disabled?: boolean
 	askResponse?: ClineAskResponse
