@@ -23,7 +23,7 @@ import { getAllModes } from "@roo/shared/modes"
 
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 import { vscode } from "@src/utils/vscode"
-import { normalizeApiConfiguration } from "@src/utils/normalizeApiConfiguration"
+import { useSelectedModel } from "@/components/ui/hooks/useSelectedModel"
 import { validateCommand } from "@src/utils/command-validation"
 import { useAppTranslation } from "@src/i18n/TranslationContext"
 
@@ -39,7 +39,8 @@ import TaskHeader from "./TaskHeader"
 import AutoApproveMenu from "./AutoApproveMenu"
 import SystemPromptWarning from "./SystemPromptWarning"
 import { useTaskSearch } from "../history/useTaskSearch"
-interface ChatViewProps {
+
+export interface ChatViewProps {
 	isHidden: boolean
 	showAnnouncement: boolean
 	hideAnnouncement: () => void
@@ -504,16 +505,14 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		startNewTask()
 	}, [startNewTask])
 
-	const { selectedModelInfo } = useMemo(() => {
-		return normalizeApiConfiguration(apiConfiguration)
-	}, [apiConfiguration])
+	const { info: model } = useSelectedModel(apiConfiguration)
 
 	const selectImages = useCallback(() => {
 		vscode.postMessage({ type: "selectImages" })
 	}, [])
 
 	const shouldDisableImages =
-		!selectedModelInfo.supportsImages || textAreaDisabled || selectedImages.length >= MAX_IMAGES_PER_MESSAGE
+		!model?.supportsImages || textAreaDisabled || selectedImages.length >= MAX_IMAGES_PER_MESSAGE
 
 	const handleMessage = useCallback(
 		(e: MessageEvent) => {
@@ -1220,7 +1219,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 						task={task}
 						tokensIn={apiMetrics.totalTokensIn}
 						tokensOut={apiMetrics.totalTokensOut}
-						doesModelSupportPromptCache={selectedModelInfo.supportsPromptCache}
+						doesModelSupportPromptCache={model?.supportsPromptCache ?? false}
 						cacheWrites={apiMetrics.totalCacheWrites}
 						cacheReads={apiMetrics.totalCacheReads}
 						totalCost={apiMetrics.totalCost}
@@ -1385,7 +1384,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 																		? t("chat:proceedWhileRunning.tooltip")
 																		: undefined
 									}
-									onClick={(e) => handlePrimaryButtonClick(inputValue, selectedImages)}>
+									onClick={() => handlePrimaryButtonClick(inputValue, selectedImages)}>
 									{primaryButtonText}
 								</VSCodeButton>
 							)}
@@ -1405,7 +1404,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 														? t("chat:terminate.tooltip")
 														: undefined
 									}
-									onClick={(e) => handleSecondaryButtonClick(inputValue, selectedImages)}>
+									onClick={() => handleSecondaryButtonClick(inputValue, selectedImages)}>
 									{isStreaming ? t("chat:cancel.title") : secondaryButtonText}
 								</VSCodeButton>
 							)}
