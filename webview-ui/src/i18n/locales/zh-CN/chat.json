@@ -231,5 +231,6 @@
 			"close": "关闭浏览器"
 		}
 	},
-	"systemPromptWarning": "警告：自定义系统提示词覆盖已激活。这可能严重破坏功能并导致不可预测的行为。"
+	"systemPromptWarning": "警告：自定义系统提示词覆盖已激活。这可能严重破坏功能并导致不可预测的行为。",
+	"selectApiConfig": "选择 API 配置"
 }

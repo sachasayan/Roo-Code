@@ -231,5 +231,6 @@
 			"close": "Fermer le navigateur"
 		}
 	},
-	"systemPromptWarning": "AVERTISSEMENT : Remplacement d'instructions système personnalisées actif. Cela peut gravement perturber la fonctionnalité et provoquer un comportement imprévisible."
+	"systemPromptWarning": "AVERTISSEMENT : Remplacement d'instructions système personnalisées actif. Cela peut gravement perturber la fonctionnalité et provoquer un comportement imprévisible.",
+	"selectApiConfig": "Sélectionner la configuration de l’API"
 }

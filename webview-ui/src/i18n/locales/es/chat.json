@@ -231,5 +231,6 @@
 			"close": "Cerrar navegador"
 		}
 	},
-	"systemPromptWarning": "ADVERTENCIA: Anulación de instrucciones del sistema personalizada activa. Esto puede romper gravemente la funcionalidad y causar un comportamiento impredecible."
+	"systemPromptWarning": "ADVERTENCIA: Anulación de instrucciones del sistema personalizada activa. Esto puede romper gravemente la funcionalidad y causar un comportamiento impredecible.",
+	"selectApiConfig": "Seleccionar configuración de API"
 }

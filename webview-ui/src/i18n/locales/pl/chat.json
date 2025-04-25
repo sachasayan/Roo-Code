@@ -231,5 +231,6 @@
 			"close": "Zamknij przeglądarkę"
 		}
 	},
-	"systemPromptWarning": "OSTRZEŻENIE: Aktywne niestandardowe zastąpienie instrukcji systemowych. Może to poważnie zakłócić funkcjonalność i powodować nieprzewidywalne zachowanie."
+	"systemPromptWarning": "OSTRZEŻENIE: Aktywne niestandardowe zastąpienie instrukcji systemowych. Może to poważnie zakłócić funkcjonalność i powodować nieprzewidywalne zachowanie.",
+	"selectApiConfig": "Wybierz konfigurację API"
 }

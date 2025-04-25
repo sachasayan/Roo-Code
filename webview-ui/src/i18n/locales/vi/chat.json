@@ -231,5 +231,6 @@
 			"close": "Đóng trình duyệt"
 		}
 	},
-	"systemPromptWarning": "CẢNH BÁO: Đã kích hoạt ghi đè lệnh nhắc hệ thống tùy chỉnh. Điều này có thể phá vỡ nghiêm trọng chức năng và gây ra hành vi không thể dự đoán."
+	"systemPromptWarning": "CẢNH BÁO: Đã kích hoạt ghi đè lệnh nhắc hệ thống tùy chỉnh. Điều này có thể phá vỡ nghiêm trọng chức năng và gây ra hành vi không thể dự đoán.",
+	"selectApiConfig": "Chọn cấu hình API"
 }

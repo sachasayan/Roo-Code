@@ -231,5 +231,6 @@
 			"close": "Fechar navegador"
 		}
 	},
-	"systemPromptWarning": "AVISO: Substituição personalizada de instrução do sistema ativa. Isso pode comprometer gravemente a funcionalidade e causar comportamento imprevisível."
+	"systemPromptWarning": "AVISO: Substituição personalizada de instrução do sistema ativa. Isso pode comprometer gravemente a funcionalidade e causar comportamento imprevisível.",
+	"selectApiConfig": "Selecionar configuração da API"
 }

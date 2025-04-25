@@ -231,5 +231,6 @@
 			"close": "Chiudi browser"
 		}
 	},
-	"systemPromptWarning": "ATTENZIONE: Sovrascrittura personalizzata delle istruzioni di sistema attiva. Questo può compromettere gravemente le funzionalità e causare comportamenti imprevedibili."
+	"systemPromptWarning": "ATTENZIONE: Sovrascrittura personalizzata delle istruzioni di sistema attiva. Questo può compromettere gravemente le funzionalità e causare comportamenti imprevedibili.",
+	"selectApiConfig": "Seleziona la configurazione API"
 }

@@ -231,5 +231,6 @@
 			"close": "Browser schließen"
 		}
 	},
-	"systemPromptWarning": "WARNUNG: Benutzerdefinierte Systemaufforderung aktiv. Dies kann die Funktionalität erheblich beeinträchtigen und zu unvorhersehbarem Verhalten führen."
+	"systemPromptWarning": "WARNUNG: Benutzerdefinierte Systemaufforderung aktiv. Dies kann die Funktionalität erheblich beeinträchtigen und zu unvorhersehbarem Verhalten führen.",
+	"selectApiConfig": "API-Konfiguration auswählen"
 }
