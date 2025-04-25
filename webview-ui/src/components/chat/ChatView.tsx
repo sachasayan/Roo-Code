@@ -80,9 +80,22 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		customModes,
 		telemetrySetting,
 		hasSystemPromptOverride,
+		historyPreviewCollapsed, // Added historyPreviewCollapsed
 	} = useExtensionState()
 
 	const { tasks } = useTaskSearch()
+
+	// Initialize expanded state based on the persisted setting (default to expanded if undefined)
+	const [isExpanded, setIsExpanded] = useState(
+		historyPreviewCollapsed === undefined ? true : !historyPreviewCollapsed,
+	)
+
+	const toggleExpanded = useCallback(() => {
+		const newState = !isExpanded
+		setIsExpanded(newState)
+		// Send message to extension to persist the new collapsed state
+		vscode.postMessage({ type: "setHistoryPreviewCollapsed", bool: !newState })
+	}, [isExpanded])
 
 	//const task = messages.length > 0 ? (messages[0].say === "task" ? messages[0] : undefined) : undefined) : undefined
 	const task = useMemo(() => messages.at(0), [messages]) // leaving this less safe version here since if the first message is not a task, then the extension is in a bad state and needs to be debugged (see Cline.abort)
@@ -1198,6 +1211,17 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 
 	return (
 		<div className={isHidden ? "hidden" : "fixed top-0 left-0 right-0 bottom-0 flex flex-col overflow-hidden"}>
+			{/* Moved Task Bar Header Here */}
+			{tasks.length !== 0 && (
+				<div className="flex items-center justify-end text-vscode-descriptionForeground w-full mx-auto max-w-[600px] px-5 pt-3">
+					<div className="flex items-center gap-1 cursor-pointer" onClick={toggleExpanded}>
+						{tasks.length < 10 && (
+							<span className={`font-medium text-xs `}>{t("history:recentTasks")}</span>
+						)}
+						<span className={`codicon  ${isExpanded ? "codicon-eye" : "codicon-eye-closed"} scale-90`} />
+					</div>
+				</div>
+			)}
 			{task ? (
 				<>
 					<TaskHeader
@@ -1252,10 +1276,12 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 						</p>
 					)}
 
-					{/* Show the task history if there are any for this workspace. */}
-					{taskHistory.length > 0 && <HistoryPreview showHistoryView={showHistoryView} />}
+					{/* Show the task history preview if expanded and tasks exist */}
+					{taskHistory.length > 0 && isExpanded && <HistoryPreview />}
 					{/* Finally, if there less than 3 tasks, we can show the tips */}
-					{tasks.length < 3 && <RooTips cycle={!!(tasks.length < 3 && taskHistory.length > 0)} />}
+					{tasks.length < 3 && isExpanded && (
+						<RooTips cycle={!!(tasks.length < 3 && taskHistory.length > 0)} />
+					)}
 				</div>
 			)}
 
