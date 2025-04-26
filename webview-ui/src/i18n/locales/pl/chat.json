@@ -73,7 +73,7 @@
 			"description": "Podziel zadania na mniejsze, łatwiejsze do zarządzania części."
 		},
 		"stickyModels": {
-			"title": "Modele przyklejone",
+			"title": "Tryby trwałe",
 			"description": "Każdy tryb zapamiętuje ostatnio używany model"
 		},
 		"tools": {

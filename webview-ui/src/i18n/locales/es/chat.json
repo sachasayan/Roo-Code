@@ -73,7 +73,7 @@
 			"description": "Divide las tareas en partes más pequeñas y manejables."
 		},
 		"stickyModels": {
-			"title": "Modelos persistentes",
+			"title": "Modos persistentes",
 			"description": "Cada modo recuerda tu último modelo utilizado"
 		},
 		"tools": {

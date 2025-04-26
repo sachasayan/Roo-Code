@@ -73,8 +73,8 @@
 			"description": "将任务拆分为更小、更易于管理的部分。"
 		},
 		"stickyModels": {
-			"title": "增强导向模式",
-			"description": "每个模式都会记住您上次使用的模型"
+			"title": "粘性模式",
+			"description": "每个模式 都会记住 您上次使用的模型"
 		},
 		"tools": {
 			"title": "工具",

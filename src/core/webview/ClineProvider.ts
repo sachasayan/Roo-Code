@@ -1213,10 +1213,8 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			language,
 			maxReadFileLine,
 			terminalCompressProgressBar,
-			historyPreviewCollapsed
+			historyPreviewCollapsed,
 		} = await this.getState()
-
-		this.log(`[Debug] getState historyPreviewCollapsed: ${historyPreviewCollapsed}`) // Add logging here
 
 		const telemetryKey = process.env.POSTHOG_API_KEY
 		const machineId = vscode.env.machineId
@@ -1390,7 +1388,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			telemetrySetting: stateValues.telemetrySetting || "unset",
 			showRooIgnoredFiles: stateValues.showRooIgnoredFiles ?? true,
 			maxReadFileLine: stateValues.maxReadFileLine ?? 500,
-			historyPreviewCollapsed: stateValues.historyPreviewCollapsed ?? false, 
+			historyPreviewCollapsed: stateValues.historyPreviewCollapsed ?? false,
 		}
 	}
 

@@ -73,7 +73,7 @@
 			"description": "작업을 더 작고 관리하기 쉬운 부분으로 나눕니다."
 		},
 		"stickyModels": {
-			"title": "고정 모델",
+			"title": "스티키 모드",
 			"description": "각 모드는 마지막으로 사용한 모델을 기억합니다."
 		},
 		"tools": {

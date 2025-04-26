@@ -73,8 +73,8 @@
 			"description": "Divideix les tasques en parts més petites i manejables."
 		},
 		"stickyModels": {
-			"title": "Models persistents",
-			"description": "Cada mode recorda el teu últim model utilitzat"
+			"title": "Modes persistents",
+			"description": "Cada mode recorda el vostre darrer model utilitzat"
 		},
 		"tools": {
 			"title": "Eines",

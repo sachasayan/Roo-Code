@@ -72,7 +72,7 @@
 			"description": "Orchestrate complex workflows with subtasks"
 		},
 		"stickyModels": {
-			"title": "Липучие модели",
+			"title": "Липкие режимы",
 			"description": "Каждый режим запоминает вашу последнюю использованную модель"
 		},
 		"tools": {

@@ -73,7 +73,7 @@
 			"description": "將任務拆分為更小、更易於管理的部分。"
 		},
 		"stickyModels": {
-			"title": "增強導向模式",
+			"title": "黏性模式",
 			"description": "每個模式都會記住您上次使用的模型"
 		},
 		"tools": {

@@ -73,7 +73,7 @@
 			"description": "Dividi le attività in parti più piccole e gestibili."
 		},
 		"stickyModels": {
-			"title": "Modelli persistenti",
+			"title": "Modalità persistenti",
 			"description": "Ogni modalità ricorda il tuo ultimo modello utilizzato"
 		},
 		"tools": {

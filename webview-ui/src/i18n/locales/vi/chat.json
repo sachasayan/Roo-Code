@@ -73,8 +73,8 @@
 			"description": "Chia nhỏ các nhiệm vụ thành các phần nhỏ hơn, dễ quản lý hơn."
 		},
 		"stickyModels": {
-			"title": "Mô hình dính",
-			"description": "Mỗi chế độ ghi nhớ mô hình bạn đã sử dụng gần đây nhất"
+			"title": "Chế độ dính",
+			"description": "Mỗi chế độ ghi nhớ mô hình đã sử dụng cuối cùng của bạn"
 		},
 		"tools": {
 			"title": "Công cụ",

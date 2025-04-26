@@ -73,7 +73,7 @@
 			"description": "Divisez les tâches en parties plus petites et gérables."
 		},
 		"stickyModels": {
-			"title": "Modèles persistants",
+			"title": "Modes persistants",
 			"description": "Chaque mode se souvient de votre dernier modèle utilisé"
 		},
 		"tools": {

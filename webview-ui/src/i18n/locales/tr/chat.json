@@ -73,8 +73,8 @@
 			"description": "Görevleri daha küçük, yönetilebilir parçalara ayırın."
 		},
 		"stickyModels": {
-			"title": "Yapışkan Modeller",
-			"description": "Her mod en son kullandığınız modeli hatırlar"
+			"title": "Yapışkan Modlar",
+			"description": "Her mod, en son kullandığınız modeli hatırlar"
 		},
 		"tools": {
 			"title": "Araçlar",
