@@ -6,7 +6,6 @@ import { formatLargeNumber, formatDate } from "@/utils/format"
 import { CopyButton } from "./CopyButton"
 import { useTaskSearch } from "./useTaskSearch"
 
-import { Trans } from "react-i18next"
 import { Coins } from "lucide-react"
 
 const HistoryPreview = () => {
@@ -14,27 +13,7 @@ const HistoryPreview = () => {
 
 	return (
 		<>
-			<div className="flex flex-col gap-3 shrink-0 ">
-				{tasks.length === 0 && (
-					<>
-						<p className="opacity-50 p-2 text-center my-0 mx-auto max-w-80">
-							<Trans
-								i18nKey="chat:onboarding"
-								components={{
-									DocsLink: (
-										<a
-											href="https://docs.roocode.com/getting-started/your-first-task"
-											target="_blank"
-											rel="noopener noreferrer">
-											the docs
-										</a>
-									),
-								}}
-							/>
-						</p>
-					</>
-				)}
-
+			<div className="flex flex-col gap-3">
 				{tasks.length !== 0 && (
 					<>
 						{tasks.slice(0, 3).map((item) => (

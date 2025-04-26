@@ -44,7 +44,6 @@ export interface ChatViewProps {
 	isHidden: boolean
 	showAnnouncement: boolean
 	hideAnnouncement: () => void
-	showHistoryView: () => void
 }
 
 export interface ChatViewRef {
@@ -56,13 +55,12 @@ export const MAX_IMAGES_PER_MESSAGE = 20 // Anthropic limits to 20 images
 const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0
 
 const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewProps> = (
-	{ isHidden, showAnnouncement, hideAnnouncement, showHistoryView },
+	{ isHidden, showAnnouncement, hideAnnouncement },
 	ref,
 ) => {
 	const { t } = useAppTranslation()
 	const modeShortcutText = `${isMac ? "⌘" : "Ctrl"} + . ${t("chat:forNextMode")}`
 	const {
-		version,
 		clineMessages: messages,
 		taskHistory,
 		apiConfiguration,
@@ -1213,6 +1211,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 
 	return (
 		<div className={isHidden ? "hidden" : "fixed top-0 left-0 right-0 bottom-0 flex flex-col overflow-hidden"}>
+			{showAnnouncement && <Announcement hideAnnouncement={hideAnnouncement} />}
 			{task ? (
 				<>
 					<TaskHeader
@@ -1245,7 +1244,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				<div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-4">
 					{/* Moved Task Bar Header Here */}
 					{tasks.length !== 0 && (
-						<div className="flex items-center justify-end text-vscode-descriptionForeground w-full mx-auto max-w-[600px] px-5 pt-3">
+						<div className="flex text-vscode-descriptionForeground w-full mx-auto px-5 pt-3">
 							<div className="flex items-center gap-1 cursor-pointer" onClick={toggleExpanded}>
 								{tasks.length < 10 && (
 									<span className={`font-medium text-xs `}>{t("history:recentTasks")}</span>
@@ -1256,35 +1255,28 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 							</div>
 						</div>
 					)}
-					<div className={` flex flex-col gap-4 m-auto ${isExpanded ? "mt-0" : ""} p-10 pt-5"`}>
-						{showAnnouncement && <Announcement version={version} hideAnnouncement={hideAnnouncement} />}
-
+					<div
+						className={` w-full flex flex-col gap-4 m-auto ${isExpanded && tasks.length > 0 ? "mt-0" : ""} p-10 pt-5"`}>
 						<RooHero />
-						{/* Always show the hero. */}
-
 						{telemetrySetting === "unset" && <TelemetryBanner />}
 						{/* Show the task history preview if expanded and tasks exist */}
 						{taskHistory.length > 0 && isExpanded && <HistoryPreview />}
-						{/* If the user has no task history, we can show the onboarding message */}
-						{taskHistory.length > -1 && (
-							<p className="ext-vscode-editor-foreground leading-tight font-vscode text-center">
-								<Trans
-									i18nKey="chat:about"
-									components={{
-										DocsLink: (
-											<a
-												href="https://docs.roocode.com/getting-started/your-first-task"
-												target="_blank"
-												rel="noopener noreferrer">
-												the docs
-											</a>
-										),
-									}}
-								/>
-							</p>
-						)}
-						{/* Finally, if there less than 3 tasks, we can show the tips */}
-						{tasks.length > -1 && <RooTips cycle={false} />}
+						<p className="ext-vscode-editor-foreground leading-tight font-vscode text-center">
+							<Trans
+								i18nKey="chat:about"
+								components={{
+									DocsLink: (
+										<a
+											href="https://docs.roocode.com/getting-started/your-first-task"
+											target="_blank"
+											rel="noopener noreferrer">
+											the docs
+										</a>
+									),
+								}}
+							/>
+						</p>
+						<RooTips cycle={false} />
 					</div>
 				</div>
 			)}

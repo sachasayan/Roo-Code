@@ -54,7 +54,7 @@ const RooTips = ({ cycle = false }: RooTipsProps) => {
 		<div
 			className={clsx(
 				"flex flex-col items-center justify-center px-5 py-2.5 gap-4",
-				cycle && "h-[5em] overflow-visible m-5", // Apply styles only when cycle is true (removed bg-red-500)
+				cycle && "h-[5em] overflow-visible m-5",
 			)}>
 			{/* If we need real estate, we show a compressed version of the tips. Otherwise, we expand it. */}
 			{cycle ? (
@@ -66,7 +66,6 @@ const RooTips = ({ cycle = false }: RooTipsProps) => {
 							isFading ? "opacity-0" : "opacity-70",
 						)}>
 						{" "}
-						{/* Corrected backtick to parenthesis */}
 						<span className={`codicon ${currentTip.icon}`}></span>
 						<span>
 							<VSCodeLink href={currentTip.href}>{t(currentTip.titleKey)}</VSCodeLink>:{" "}

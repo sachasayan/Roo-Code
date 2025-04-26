@@ -4,13 +4,12 @@ import { useAppTranslation } from "@/i18n/TranslationContext"
 import { Trans } from "react-i18next"
 
 interface AnnouncementProps {
-	version: string
 	hideAnnouncement: () => void
 }
 /*
 You must update the latestAnnouncementId in ClineProvider for new announcements to show to users. This new id will be compared with whats in state for the 'last announcement shown', and if it's different then the announcement will render. As soon as an announcement is shown, the id will be updated in state. This ensures that announcements are not shown more than once, even if the user doesn't close it themselves.
 */
-const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
+const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 	const { t } = useAppTranslation()
 
 	const discordLink = (
@@ -71,6 +70,7 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 							i18nKey="chat:announcement.feature1"
 							components={{
 								bold: <b />,
+								code: <code />,
 							}}
 						/>
 					</li>
@@ -80,6 +80,7 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 							i18nKey="chat:announcement.feature2"
 							components={{
 								bold: <b />,
+								code: <code />,
 							}}
 						/>
 					</li>
@@ -89,6 +90,7 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 							i18nKey="chat:announcement.feature3"
 							components={{
 								bold: <b />,
+								code: <code />,
 							}}
 						/>
 					</li>
