@@ -44,7 +44,7 @@ const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 		<div className="flex flex-col justify-center absolute top-0 bottom-0 left-0 right-0 z-50 p-10 bg-black/50">
 			<div
 				style={{
-					backgroundColor: "var(--vscode-editor-inactiveSelectionBackground)",
+					backgroundColor: "var(--vscode-editor-background)",
 					borderRadius: "3px",
 					padding: "12px 16px",
 					margin: "5px 15px 5px 15px",
