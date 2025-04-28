@@ -89,5 +89,14 @@
 		"path_placeholder": "D:\\RooCodeStorage",
 		"enter_absolute_path": "Introdueix una ruta completa (p. ex. D:\\RooCodeStorage o /home/user/storage)",
 		"enter_valid_path": "Introdueix una ruta vàlida"
+	},
+	"chat": {
+		"shellIntegration": {
+			"troubleshootingGuide": "guia de resolució de problemes"
+		},
+		"copyAsMarkdown": "Copia com a markdown",
+		"response": "Resposta",
+		"arguments": "Arguments",
+		"filePathFormat": " ({{filePath}})"
 	}
 }

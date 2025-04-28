@@ -89,5 +89,14 @@
 	"input": {
 		"task_prompt": "讓 Roo 做什麼？",
 		"task_placeholder": "在這裡輸入工作"
+	},
+	"chat": {
+		"shellIntegration": {
+			"troubleshootingGuide": "疑難排解指南"
+		},
+		"copyAsMarkdown": "複製為Markdown",
+		"response": "回應",
+		"arguments": "引數",
+		"filePathFormat": " ({{filePath}})"
 	}
 }

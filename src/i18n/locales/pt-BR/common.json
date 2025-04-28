@@ -89,5 +89,14 @@
 		"path_placeholder": "D:\\RooCodeStorage",
 		"enter_absolute_path": "Por favor, digite um caminho absoluto (ex: D:\\RooCodeStorage ou /home/user/storage)",
 		"enter_valid_path": "Por favor, digite um caminho válido"
+	},
+	"chat": {
+		"shellIntegration": {
+			"troubleshootingGuide": "guia de solução de problemas"
+		},
+		"copyAsMarkdown": "Copiar como markdown",
+		"response": "Resposta",
+		"arguments": "Argumentos",
+		"filePathFormat": " ({{filePath}})"
 	}
 }

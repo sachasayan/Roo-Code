@@ -89,5 +89,14 @@
 	"input": {
 		"task_prompt": "Was soll Roo tun?",
 		"task_placeholder": "Gib deine Aufgabe hier ein"
+	},
+	"chat": {
+		"shellIntegration": {
+			"troubleshootingGuide": "Anleitung zur Fehlerbehebung"
+		},
+		"copyAsMarkdown": "Als Markdown kopieren",
+		"response": "Antwort",
+		"arguments": "Argumente",
+		"filePathFormat": " ({{filePath}})"
 	}
 }

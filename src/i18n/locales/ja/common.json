@@ -89,5 +89,14 @@
 	"input": {
 		"task_prompt": "Rooにどんなことをさせますか？",
 		"task_placeholder": "タスクをここに入力してください"
+	},
+	"chat": {
+		"shellIntegration": {
+			"troubleshootingGuide": "トラブルシューティングガイド"
+		},
+		"copyAsMarkdown": "マークダウンとしてコピー",
+		"response": "応答",
+		"arguments": "引数",
+		"filePathFormat": " ({{filePath}})"
 	}
 }
