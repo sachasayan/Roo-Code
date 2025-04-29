@@ -114,7 +114,8 @@
 		"failed": "Zapytanie API nie powiodło się",
 		"streaming": "Zapytanie API...",
 		"cancelled": "Zapytanie API anulowane",
-		"streamingFailed": "Strumieniowanie API nie powiodło się"
+		"streamingFailed": "Strumieniowanie API nie powiodło się",
+		"viewDetailsTooltip": "Wyświetl szczegóły zapytania API"
 	},
 	"checkpoint": {
 		"initial": "Początkowy punkt kontrolny",
@@ -134,7 +135,8 @@
 		"current": "Bieżący"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo chce pobrać szczegółowe instrukcje, aby pomóc w bieżącym zadaniu"
+		"wantsToFetch": "Roo chce pobrać szczegółowe instrukcje, aby pomóc w bieżącym zadaniu",
+		"viewInstructions": "Wyświetl instrukcje"
 	},
 	"fileOperations": {
 		"wantsToRead": "Roo chce przeczytać ten plik:",
@@ -147,7 +149,10 @@
 		"didSearchReplace": "Roo wykonał wyszukiwanie i zamianę w tym pliku:",
 		"wantsToInsert": "Roo chce wstawić zawartość do tego pliku:",
 		"wantsToInsertWithLineNumber": "Roo chce wstawić zawartość do tego pliku w linii {{lineNumber}}:",
-		"wantsToInsertAtEnd": "Roo chce dodać zawartość na końcu tego pliku:"
+		"wantsToInsertAtEnd": "Roo chce dodać zawartość na końcu tego pliku:",
+		"viewDefinitions": "Wyświetl definicje",
+		"viewFileList": "Wyświetl listę plików",
+		"viewSearchResults": "Wyświetl wyniki wyszukiwania"
 	},
 	"directoryOperations": {
 		"wantsToViewTopLevel": "Roo chce zobaczyć pliki najwyższego poziomu w tym katalogu:",
@@ -157,7 +162,10 @@
 		"wantsToViewDefinitions": "Roo chce zobaczyć nazwy definicji kodu źródłowego używane w tym katalogu:",
 		"didViewDefinitions": "Roo zobaczył nazwy definicji kodu źródłowego używane w tym katalogu:",
 		"wantsToSearch": "Roo chce przeszukać ten katalog w poszukiwaniu <code>{{regex}}</code>:",
-		"didSearch": "Roo przeszukał ten katalog w poszukiwaniu <code>{{regex}}</code>:"
+		"didSearch": "Roo przeszukał ten katalog w poszukiwaniu <code>{{regex}}</code>:",
+		"viewDefinitions": "Wyświetl definicje",
+		"viewFileList": "Wyświetl listę plików",
+		"viewSearchResults": "Wyświetl wyniki wyszukiwania"
 	},
 	"commandOutput": "Wyjście polecenia",
 	"response": "Odpowiedź",
@@ -190,7 +198,8 @@
 		"troubleshooting": "Nadal masz problemy? Kliknij tutaj, aby zobaczyć dokumentację integracji powłoki.",
 		"checkSettings": "Sprawdź obejścia terminala na stronie ustawień",
 		"updateVSCode": "Zaktualizuj VSCode",
-		"supportedShell": "Upewnij się, że używasz obsługiwanej powłoki: zsh, bash, fish lub PowerShell"
+		"supportedShell": "Upewnij się, że używasz obsługiwanej powłoki: zsh, bash, fish lub PowerShell",
+		"troubleshootingGuide": "Nadal masz problemy? Kliknij tutaj, aby zobaczyć dokumentację integracji powłoki."
 	},
 	"powershell": {
 		"issues": "Wygląda na to, że masz problemy z Windows PowerShell, proszę zapoznaj się z tym"
@@ -240,5 +249,12 @@
 		}
 	},
 	"systemPromptWarning": "OSTRZEŻENIE: Aktywne niestandardowe zastąpienie instrukcji systemowych. Może to poważnie zakłócić funkcjonalność i powodować nieprzewidywalne zachowanie.",
-	"selectApiConfig": "Wybierz konfigurację API"
+	"selectApiConfig": "Wybierz konfigurację API",
+	"copyAsMarkdown": "Kopiuj jako markdown",
+	"filePathFormat": " ({{filePath}})",
+	"viewCommandOutput": "Wyświetl wyjście polecenia",
+	"viewFeedbackDiff": "Wyświetl różnicę opinii",
+	"viewChanges": "Wyświetl zmiany",
+	"viewDiff": "Wyświetl różnicę",
+	"viewFileContent": "Wyświetl zawartość pliku"
 }

@@ -105,7 +105,8 @@
 	"edit": "Modifica...",
 	"forNextMode": "per la prossima modalità",
 	"instructions": {
-		"wantsToFetch": "Roo vuole recuperare istruzioni dettagliate per aiutare con l'attività corrente"
+		"wantsToFetch": "Roo vuole recuperare istruzioni dettagliate per aiutare con l'attività corrente",
+		"viewInstructions": "Visualizza istruzioni"
 	},
 	"error": "Errore",
 	"diffError": {
@@ -117,7 +118,8 @@
 		"failed": "Richiesta API fallita",
 		"streaming": "Richiesta API...",
 		"cancelled": "Richiesta API annullata",
-		"streamingFailed": "Streaming API fallito"
+		"streamingFailed": "Streaming API fallito",
+		"viewDetailsTooltip": "Visualizza dettagli richiesta API"
 	},
 	"checkpoint": {
 		"initial": "Checkpoint iniziale",
@@ -150,6 +152,9 @@
 		"wantsToInsertAtEnd": "Roo vuole aggiungere contenuto alla fine di questo file:"
 	},
 	"directoryOperations": {
+		"viewDefinitions": "Visualizza definizioni",
+		"viewFileList": "Visualizza elenco file",
+		"viewSearchResults": "Visualizza risultati ricerca",
 		"wantsToViewTopLevel": "Roo vuole visualizzare i file di primo livello in questa directory:",
 		"didViewTopLevel": "Roo ha visualizzato i file di primo livello in questa directory:",
 		"wantsToViewRecursive": "Roo vuole visualizzare ricorsivamente tutti i file in questa directory:",
@@ -190,7 +195,8 @@
 		"troubleshooting": "Ancora problemi? Clicca qui per la documentazione sull'integrazione della shell.",
 		"checkSettings": "Controlla le soluzioni alternative del terminale nella pagina delle impostazioni",
 		"updateVSCode": "Aggiorna VSCode",
-		"supportedShell": "Assicurati di utilizzare una shell supportata: zsh, bash, fish o PowerShell"
+		"supportedShell": "Assicurati di utilizzare una shell supportata: zsh, bash, fish o PowerShell",
+		"troubleshootingGuide": "Ancora problemi? Clicca qui per la documentazione sull'integrazione della shell."
 	},
 	"powershell": {
 		"issues": "Sembra che tu stia avendo problemi con Windows PowerShell, consulta questa"
@@ -240,5 +246,12 @@
 		}
 	},
 	"systemPromptWarning": "ATTENZIONE: Sovrascrittura personalizzata delle istruzioni di sistema attiva. Questo può compromettere gravemente le funzionalità e causare comportamenti imprevedibili.",
-	"selectApiConfig": "Seleziona la configurazione API"
+	"selectApiConfig": "Seleziona la configurazione API",
+	"copyAsMarkdown": "Copia come markdown",
+	"filePathFormat": " ({{filePath}})",
+	"viewCommandOutput": "Visualizza output comando",
+	"viewFeedbackDiff": "Visualizza differenza feedback",
+	"viewChanges": "Visualizza modifiche",
+	"viewDiff": "Visualizza differenza",
+	"viewFileContent": "Visualizza contenuto file"
 }

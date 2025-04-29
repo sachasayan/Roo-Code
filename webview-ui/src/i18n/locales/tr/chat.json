@@ -114,7 +114,8 @@
 		"failed": "API İsteği Başarısız",
 		"streaming": "API İsteği...",
 		"cancelled": "API İsteği İptal Edildi",
-		"streamingFailed": "API Akışı Başarısız"
+		"streamingFailed": "API Akışı Başarısız",
+		"viewDetailsTooltip": "API İsteği Ayrıntılarını Görüntüle"
 	},
 	"checkpoint": {
 		"initial": "İlk Kontrol Noktası",
@@ -134,7 +135,8 @@
 		"current": "Mevcut"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo mevcut göreve yardımcı olmak için ayrıntılı talimatlar almak istiyor"
+		"wantsToFetch": "Roo mevcut göreve yardımcı olmak için ayrıntılı talimatlar almak istiyor",
+		"viewInstructions": "Talimatları Görüntüle"
 	},
 	"fileOperations": {
 		"wantsToRead": "Roo bu dosyayı okumak istiyor:",
@@ -147,7 +149,10 @@
 		"didSearchReplace": "Roo bu dosyada arama ve değiştirme yaptı:",
 		"wantsToInsert": "Roo bu dosyaya içerik eklemek istiyor:",
 		"wantsToInsertWithLineNumber": "Roo bu dosyanın {{lineNumber}}. satırına içerik eklemek istiyor:",
-		"wantsToInsertAtEnd": "Roo bu dosyanın sonuna içerik eklemek istiyor:"
+		"wantsToInsertAtEnd": "Roo bu dosyanın sonuna içerik eklemek istiyor:",
+		"viewDefinitions": "Tanımları Görüntüle",
+		"viewFileList": "Dosya Listesini Görüntüle",
+		"viewSearchResults": "Arama Sonuçlarını Görüntüle"
 	},
 	"directoryOperations": {
 		"wantsToViewTopLevel": "Roo bu dizindeki üst düzey dosyaları görüntülemek istiyor:",
@@ -157,7 +162,10 @@
 		"wantsToViewDefinitions": "Roo bu dizinde kullanılan kaynak kod tanımlama isimlerini görüntülemek istiyor:",
 		"didViewDefinitions": "Roo bu dizinde kullanılan kaynak kod tanımlama isimlerini görüntüledi:",
 		"wantsToSearch": "Roo bu dizinde <code>{{regex}}</code> için arama yapmak istiyor:",
-		"didSearch": "Roo bu dizinde <code>{{regex}}</code> için arama yaptı:"
+		"didSearch": "Roo bu dizinde <code>{{regex}}</code> için arama yaptı:",
+		"viewDefinitions": "Tanımları Görüntüle",
+		"viewFileList": "Dosya Listesini Görüntüle",
+		"viewSearchResults": "Arama Sonuçlarını Görüntüle"
 	},
 	"commandOutput": "Komut Çıktısı",
 	"response": "Yanıt",
@@ -190,7 +198,8 @@
 		"troubleshooting": "Hala sorun mu yaşıyorsunuz? Kabuk entegrasyonu belgelerine göz atmak için buraya tıklayın.",
 		"checkSettings": "Ayarlar sayfasındaki terminal geçici çözümlerini kontrol et",
 		"updateVSCode": "VSCode'u güncelle",
-		"supportedShell": "Desteklenen bir kabuk kullandığından emin ol: zsh, bash, fish veya PowerShell"
+		"supportedShell": "Desteklenen bir kabuk kullandığından emin ol: zsh, bash, fish veya PowerShell",
+		"troubleshootingGuide": "Hala sorun mu yaşıyorsunuz? Kabuk entegrasyonu belgelerine göz atmak için buraya tıklayın."
 	},
 	"powershell": {
 		"issues": "Windows PowerShell ile ilgili sorunlar yaşıyor gibi görünüyorsunuz, lütfen şu konuya bakın"
@@ -240,5 +249,12 @@
 		}
 	},
 	"systemPromptWarning": "UYARI: Özel sistem komut geçersiz kılma aktif. Bu işlevselliği ciddi şekilde bozabilir ve öngörülemeyen davranışlara neden olabilir.",
-	"selectApiConfig": "API yapılandırmasını seçin"
+	"selectApiConfig": "API yapılandırmasını seçin",
+	"copyAsMarkdown": "Markdown olarak kopyala",
+	"filePathFormat": " ({{filePath}})",
+	"viewCommandOutput": "Komut Çıktısını Görüntüle",
+	"viewFeedbackDiff": "Geri Bildirim Farkını Görüntüle",
+	"viewChanges": "Değişiklikleri Görüntüle",
+	"viewDiff": "Farkı Görüntüle",
+	"viewFileContent": "Dosya İçeriğini Görüntüle"
 }

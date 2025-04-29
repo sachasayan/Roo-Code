@@ -114,7 +114,8 @@
 		"failed": "API-Anfrage fehlgeschlagen",
 		"streaming": "API-Anfrage...",
 		"cancelled": "API-Anfrage abgebrochen",
-		"streamingFailed": "API-Streaming fehlgeschlagen"
+		"streamingFailed": "API-Streaming fehlgeschlagen",
+		"viewDetailsTooltip": "API-Anfragedetails anzeigen"
 	},
 	"checkpoint": {
 		"initial": "Initialer Checkpoint",
@@ -134,7 +135,8 @@
 		"current": "Aktuell"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo möchte detaillierte Anweisungen abrufen, um bei der aktuellen Aufgabe zu helfen"
+		"wantsToFetch": "Roo möchte detaillierte Anweisungen abrufen, um bei der aktuellen Aufgabe zu helfen",
+		"viewInstructions": "Anweisungen anzeigen"
 	},
 	"fileOperations": {
 		"wantsToRead": "Roo möchte diese Datei lesen:",
@@ -147,7 +149,10 @@
 		"didSearchReplace": "Roo hat Suchen und Ersetzen in dieser Datei durchgeführt:",
 		"wantsToInsert": "Roo möchte Inhalte in diese Datei einfügen:",
 		"wantsToInsertWithLineNumber": "Roo möchte Inhalte in diese Datei in Zeile {{lineNumber}} einfügen:",
-		"wantsToInsertAtEnd": "Roo möchte Inhalte am Ende dieser Datei anhängen:"
+		"wantsToInsertAtEnd": "Roo möchte Inhalte am Ende dieser Datei anhängen:",
+		"viewDefinitions": "Definitionen anzeigen",
+		"viewFileList": "Dateiliste anzeigen",
+		"viewSearchResults": "Suchergebnisse anzeigen"
 	},
 	"directoryOperations": {
 		"wantsToViewTopLevel": "Roo möchte die Dateien auf oberster Ebene in diesem Verzeichnis anzeigen:",
@@ -157,7 +162,10 @@
 		"wantsToViewDefinitions": "Roo möchte Quellcode-Definitionsnamen in diesem Verzeichnis anzeigen:",
 		"didViewDefinitions": "Roo hat Quellcode-Definitionsnamen in diesem Verzeichnis angezeigt:",
 		"wantsToSearch": "Roo möchte dieses Verzeichnis nach <code>{{regex}}</code> durchsuchen:",
-		"didSearch": "Roo hat dieses Verzeichnis nach <code>{{regex}}</code> durchsucht:"
+		"didSearch": "Roo hat dieses Verzeichnis nach <code>{{regex}}</code> durchsucht:",
+		"viewDefinitions": "Definitionen anzeigen",
+		"viewFileList": "Dateiliste anzeigen",
+		"viewSearchResults": "Suchergebnisse anzeigen"
 	},
 	"commandOutput": "Befehlsausgabe",
 	"response": "Antwort",
@@ -190,7 +198,8 @@
 		"troubleshooting": "Immer noch Probleme? Klicke hier für die Shell-Integrationsdokumentation.",
 		"checkSettings": "Überprüfe die Terminal-Workarounds in den Einstellungen",
 		"updateVSCode": "VSCode aktualisieren",
-		"supportedShell": "Stelle sicher, dass du eine unterstützte Shell verwendest: zsh, bash, fish oder PowerShell"
+		"supportedShell": "Stelle sicher, dass du eine unterstützte Shell verwendest: zsh, bash, fish oder PowerShell",
+		"troubleshootingGuide": "Immer noch Probleme? Klicke hier für die Shell-Integrationsdokumentation."
 	},
 	"powershell": {
 		"issues": "Es scheint, dass du Probleme mit Windows PowerShell hast, bitte sieh dir dies an"
@@ -240,5 +249,12 @@
 		}
 	},
 	"systemPromptWarning": "WARNUNG: Benutzerdefinierte Systemaufforderung aktiv. Dies kann die Funktionalität erheblich beeinträchtigen und zu unvorhersehbarem Verhalten führen.",
-	"selectApiConfig": "API-Konfiguration auswählen"
+	"selectApiConfig": "API-Konfiguration auswählen",
+	"copyAsMarkdown": "Als Markdown kopieren",
+	"filePathFormat": " ({{filePath}})",
+	"viewCommandOutput": "Befehlsausgabe anzeigen",
+	"viewFeedbackDiff": "Feedback-Unterschied anzeigen",
+	"viewChanges": "Änderungen anzeigen",
+	"viewDiff": "Unterschied anzeigen",
+	"viewFileContent": "Dateiinhalte anzeigen"
 }

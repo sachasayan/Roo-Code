@@ -223,4 +223,13 @@ const SvgContainer = styled.div<SvgContainerProps>`
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
+	max-height: 400px; /* Add max-height constraint */
+
+	/* Ensure the SVG scales within the container */
+	& > svg {
+		display: block; /* Ensure block layout */
+		width: 100%;
+		max-height: 100%; /* Respect container's max-height */
+		/* preserveAspectRatio="xMidYMid meet" (set by Mermaid) handles scaling */
+	}
 `

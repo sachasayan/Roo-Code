@@ -403,3 +403,7 @@ input[cmdk-input]:focus {
 .codicon[class*="codicon-"] {
 	text-rendering: geometricPrecision !important;
 }
+
+.roo-tool-use {
+	@apply min-h-7 rounded py-2 px-3 items-center cursor-pointer select-none border  bg-vscode-editor-background;
+}

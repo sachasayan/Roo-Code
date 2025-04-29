@@ -114,7 +114,8 @@
 		"failed": "Sol·licitud API ha fallat",
 		"streaming": "Sol·licitud API...",
 		"cancelled": "Sol·licitud API cancel·lada",
-		"streamingFailed": "Transmissió API ha fallat"
+		"streamingFailed": "Transmissió API ha fallat",
+		"viewDetailsTooltip": "Veure detalls de la sol·licitud API"
 	},
 	"checkpoint": {
 		"initial": "Punt de control inicial",
@@ -134,7 +135,8 @@
 		"current": "Actual"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo vol obtenir instruccions detallades per ajudar amb la tasca actual."
+		"wantsToFetch": "Roo vol obtenir instruccions detallades per ajudar amb la tasca actual.",
+		"viewInstructions": "Veure instruccions"
 	},
 	"fileOperations": {
 		"wantsToRead": "Roo vol llegir aquest fitxer:",
@@ -147,7 +149,10 @@
 		"didSearchReplace": "Roo ha realitzat cerca i substitució en aquest fitxer:",
 		"wantsToInsert": "Roo vol inserir contingut en aquest fitxer:",
 		"wantsToInsertWithLineNumber": "Roo vol inserir contingut a la línia {{lineNumber}} d'aquest fitxer:",
-		"wantsToInsertAtEnd": "Roo vol afegir contingut al final d'aquest fitxer:"
+		"wantsToInsertAtEnd": "Roo vol afegir contingut al final d'aquest fitxer:",
+		"viewDefinitions": "Veure definicions",
+		"viewFileList": "Veure llista de fitxers",
+		"viewSearchResults": "Veure resultats de cerca"
 	},
 	"directoryOperations": {
 		"wantsToViewTopLevel": "Roo vol veure els fitxers de nivell superior en aquest directori:",
@@ -157,7 +162,10 @@
 		"wantsToViewDefinitions": "Roo vol veure noms de definicions de codi font utilitzats en aquest directori:",
 		"didViewDefinitions": "Roo ha vist noms de definicions de codi font utilitzats en aquest directori:",
 		"wantsToSearch": "Roo vol cercar en aquest directori <code>{{regex}}</code>:",
-		"didSearch": "Roo ha cercat en aquest directori <code>{{regex}}</code>:"
+		"didSearch": "Roo ha cercat en aquest directori <code>{{regex}}</code>:",
+		"viewDefinitions": "Veure definicions",
+		"viewFileList": "Veure llista de fitxers",
+		"viewSearchResults": "Veure resultats de cerca"
 	},
 	"commandOutput": "Sortida de l'ordre",
 	"response": "Resposta",
@@ -190,7 +198,8 @@
 		"troubleshooting": "Encara tens problemes? Fes clic aquí per a la documentació d'integració de shell.",
 		"checkSettings": "Comprova les solucions alternatives del terminal a la pàgina de configuració",
 		"updateVSCode": "Actualitza VSCode",
-		"supportedShell": "Assegura't d'utilitzar un shell compatible: zsh, bash, fish o PowerShell"
+		"supportedShell": "Assegura't d'utilitzar un shell compatible: zsh, bash, fish o PowerShell",
+		"troubleshootingGuide": "Encara tens problemes? Fes clic aquí per a la documentació d'integració de shell."
 	},
 	"powershell": {
 		"issues": "Sembla que estàs tenint problemes amb Windows PowerShell, si us plau consulta aquesta documentació per a més informació."
@@ -240,5 +249,12 @@
 		}
 	},
 	"systemPromptWarning": "ADVERTÈNCIA: S'ha activat una substitució personalitzada d'instruccions del sistema. Això pot trencar greument la funcionalitat i causar un comportament impredictible.",
-	"selectApiConfig": "Seleccioneu la configuració de l'API"
+	"selectApiConfig": "Seleccioneu la configuració de l'API",
+	"copyAsMarkdown": "Copiar com a markdown",
+	"filePathFormat": " ({{filePath}})",
+	"viewCommandOutput": "Veure la sortida de l'ordre",
+	"viewFeedbackDiff": "Veure la diferència de feedback",
+	"viewChanges": "Veure els canvis",
+	"viewDiff": "Veure la diferència",
+	"viewFileContent": "Veure el contingut del fitxer"
 }
