@@ -808,7 +808,6 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 	}
 
 	async updateApiConfiguration(providerSettings: ProviderSettings) {
-		// Update mode's default config.
 		const { mode } = await this.getState()
 
 		if (mode) {
@@ -1460,7 +1459,6 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 		return this.getCurrentCline()?.clineMessages || []
 	}
 
-	// Add public getter
 	public getMcpHub(): McpHub | undefined {
 		return this.mcpHub
 	}
@@ -1481,27 +1479,22 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 			platform,
 		}
 
-		// Add extension version
 		if (appVersion) {
 			properties.appVersion = appVersion
 		}
 
-		// Add language
 		if (language) {
 			properties.language = language
 		}
 
-		// Add current mode
 		if (mode) {
 			properties.mode = mode
 		}
 
-		// Add API provider
 		if (apiConfiguration?.apiProvider) {
 			properties.apiProvider = apiConfiguration.apiProvider
 		}
 
-		// Add model ID if available
 		const currentCline = this.getCurrentCline()
 
 		if (currentCline?.api) {

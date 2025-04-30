@@ -72,17 +72,15 @@ export function parseCommand(command: string): string[] {
 		}
 	}
 
-	// Add any remaining command
 	if (currentCommand.length > 0) {
 		commands.push(currentCommand.join(" "))
 	}
 
-	// Restore quotes and redirections
 	return commands.map((cmd) => {
 		let result = cmd
-		// Restore quotes
+
 		result = result.replace(/__QUOTE_(\d+)__/g, (_, i) => quotes[parseInt(i)])
-		// Restore redirections
+
 		result = result.replace(/__REDIR_(\d+)__/g, (_, i) => redirections[parseInt(i)])
 		return result
 	})

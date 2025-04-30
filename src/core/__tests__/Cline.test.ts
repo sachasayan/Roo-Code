@@ -241,7 +241,7 @@ describe("Cline", () => {
 		mockApiConfig = {
 			apiProvider: "anthropic",
 			apiModelId: "claude-3-5-sonnet-20241022",
-			apiKey: "test-api-key", // Add API key to mock config
+			apiKey: "test-api-key",
 		}
 
 		// Mock provider methods

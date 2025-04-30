@@ -856,7 +856,7 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			await updateGlobalState("maxReadFileLine", message.value)
 			await provider.postStateToWebview()
 			break
-		case "setHistoryPreviewCollapsed": // Add the new case handler
+		case "setHistoryPreviewCollapsed":
 			await updateGlobalState("historyPreviewCollapsed", message.bool ?? false)
 			// No need to call postStateToWebview here as the UI already updated optimistically
 			break
@@ -1205,7 +1205,7 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 		case "updateCustomMode":
 			if (message.modeConfig) {
 				await provider.customModesManager.updateCustomMode(message.modeConfig.slug, message.modeConfig)
-				// Update state after saving the mode
+
 				const customModes = await provider.customModesManager.getCustomModes()
 				await updateGlobalState("customModes", customModes)
 				await updateGlobalState("mode", message.modeConfig.slug)

@@ -109,7 +109,6 @@ describe("McpHub", () => {
 	})
 
 	afterEach(() => {
-		// Restore original console methods
 		console.error = originalConsoleError
 	})
 
@@ -476,7 +475,6 @@ describe("McpHub", () => {
 				// Mock initial read
 				;(fs.readFile as jest.Mock).mockResolvedValueOnce(JSON.stringify(mockConfig))
 
-				// Update with invalid timeout
 				await mcpHub.updateServerTimeout("test-server", 3601)
 
 				// Config is written

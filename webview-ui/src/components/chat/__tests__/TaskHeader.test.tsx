@@ -25,8 +25,8 @@ jest.mock("@src/context/ExtensionStateContext", () => ({
 	useExtensionState: () => ({
 		apiConfiguration: {
 			apiProvider: "anthropic",
-			apiKey: "test-api-key", // Add relevant fields
-			apiModelId: "claude-3-opus-20240229", // Add relevant fields
+			apiKey: "test-api-key",
+			apiModelId: "claude-3-opus-20240229",
 		} as ApiConfiguration, // Optional: Add type assertion if ApiConfiguration is imported
 		currentTaskItem: null,
 	}),

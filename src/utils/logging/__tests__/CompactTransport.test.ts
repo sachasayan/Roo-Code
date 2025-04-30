@@ -23,7 +23,7 @@ describe("CompactTransport", () => {
 						fs.unlinkSync(curPath)
 					}
 				})
-				// Remove directory after it's empty
+
 				fs.rmdirSync(dirPath)
 			}
 		}

@@ -78,7 +78,6 @@ function createRealCommandStream(command: string): { stream: AsyncIterable<strin
 			const signals: Record<string, number> = {
 				SIGTERM: 15,
 				SIGSEGV: 11,
-				// Add other signals as needed
 			}
 			const signalNum = signals[error.signal]
 			if (signalNum !== undefined) {
@@ -151,7 +150,6 @@ async function testTerminalCommand(
 	const mockTerminalInfo = new Terminal(1, mockTerminal, "/test/path")
 	mockTerminalInfo.running = true
 
-	// Add the terminal to the registry
 	TerminalRegistry["terminals"] = [mockTerminalInfo]
 
 	// Create a new terminal process for testing

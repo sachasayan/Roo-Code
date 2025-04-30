@@ -64,7 +64,6 @@ describe("TerminalRegistry", () => {
 					},
 				})
 			} finally {
-				// Restore original delay
 				Terminal.setCommandDelay(originalDelay)
 			}
 		})

@@ -21,7 +21,7 @@ export function insertGroups(original: string[], insertGroups: InsertGroup[]): s
 	normalGroups.forEach(({ index, elements }) => {
 		// Add elements from original array up to insertion point
 		result.push(...original.slice(lastIndex, index))
-		// Add the group of elements
+
 		result.push(...elements)
 		lastIndex = index
 	})

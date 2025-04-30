@@ -436,7 +436,6 @@ const CodeBlock = memo(
 		// Update button position and scroll when highlightedCode changes
 		useEffect(() => {
 			if (highlightedCode) {
-				// Update button position
 				setTimeout(updateCodeBlockButtonPosition, 0)
 
 				// Scroll to bottom if needed (immediately after Shiki updates)

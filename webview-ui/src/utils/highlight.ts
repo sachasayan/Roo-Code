@@ -20,7 +20,6 @@ export function highlightFzfMatch(
 			})
 		}
 
-		// Add highlighted character
 		parts.push({
 			text: text[pos],
 			highlight: true,
@@ -29,7 +28,6 @@ export function highlightFzfMatch(
 		lastIndex = pos + 1
 	})
 
-	// Add any remaining text
 	if (lastIndex < text.length) {
 		parts.push({
 			text: text.substring(lastIndex),

@@ -12,14 +12,13 @@ jest.mock("web-tree-sitter", () => {
 	}
 })
 
-// Add static methods to Parser mock
 const ParserMock = Parser as jest.MockedClass<typeof Parser>
 ParserMock.init = jest.fn().mockResolvedValue(undefined)
 ParserMock.Language = {
 	load: jest.fn().mockResolvedValue({
 		query: jest.fn().mockReturnValue("mockQuery"),
 	}),
-	prototype: {}, // Add required prototype property
+	prototype: {},
 } as unknown as typeof Parser.Language
 
 describe("Language Parser", () => {

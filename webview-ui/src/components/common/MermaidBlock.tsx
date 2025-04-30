@@ -43,7 +43,6 @@ mermaid.initialize({
 		fontSize: "16px",
 		fontFamily: "var(--vscode-font-family, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif)",
 
-		// Additional styling
 		noteTextColor: "#ffffff",
 		noteBkgColor: "#454545",
 		noteBorderColor: "#888888",
@@ -167,7 +166,6 @@ async function svgToPng(svgEl: SVGElement): Promise<string> {
 	const scale = editorWidth / originalWidth
 	const scaledHeight = originalHeight * scale
 
-	// Update SVG dimensions
 	svgClone.setAttribute("width", `${editorWidth}`)
 	svgClone.setAttribute("height", `${scaledHeight}`)
 

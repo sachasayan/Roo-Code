@@ -38,7 +38,7 @@ export abstract class CacheStrategy {
 			let tokenCount = words.length * 1.3
 			// Add overhead for punctuation and special characters
 			tokenCount += (text.match(/[.,!?;:()[\]{}""''`]/g) || []).length * 0.3
-			// Add overhead for newlines
+
 			tokenCount += (text.match(/\n/g) || []).length * 0.5
 			// Add a small overhead for system prompt structure
 			tokenCount += 5
@@ -116,7 +116,7 @@ export abstract class CacheStrategy {
 						totalTokens += words.length * 1.3
 						// Add overhead for punctuation and special characters
 						totalTokens += (text.match(/[.,!?;:()[\]{}""''`]/g) || []).length * 0.3
-						// Add overhead for newlines
+
 						totalTokens += (text.match(/\n/g) || []).length * 0.5
 					}
 				} else if (block.type === "image") {
@@ -132,7 +132,7 @@ export abstract class CacheStrategy {
 			totalTokens += words.length * 1.3
 			// Add overhead for punctuation and special characters
 			totalTokens += (text.match(/[.,!?;:()[\]{}""''`]/g) || []).length * 0.3
-			// Add overhead for newlines
+
 			totalTokens += (text.match(/\n/g) || []).length * 0.5
 		}
 

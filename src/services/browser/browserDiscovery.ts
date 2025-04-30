@@ -117,7 +117,6 @@ const discoverChromeHosts = async (port: number): Promise<string | null> => {
 		ipAddresses.push(hostIP)
 	}
 
-	// Remove duplicates
 	const uniqueIPs = [...new Set(ipAddresses)]
 	console.log("IP Addresses to try:", uniqueIPs)
 

@@ -238,7 +238,6 @@ export class BrowserSession {
 			lastLogTs = Date.now()
 		}
 
-		// Add the listeners
 		this.page.on("console", consoleListener)
 		this.page.on("pageerror", errorListener)
 
@@ -307,7 +306,7 @@ export class BrowserSession {
 	private getRootDomain(url: string): string {
 		try {
 			const urlObj = new URL(url)
-			// Remove www. prefix if present
+
 			return urlObj.host.replace(/^www\./, "")
 		} catch (error) {
 			// If URL parsing fails, return the original URL
@@ -349,7 +348,7 @@ export class BrowserSession {
 		if (!this.browser) {
 			throw new Error("Browser is not launched")
 		}
-		// Remove trailing slash for comparison
+
 		const normalizedNewUrl = url.replace(/\/$/, "")
 
 		// Extract the root domain from the URL
@@ -379,12 +378,11 @@ export class BrowserSession {
 			// Tab with the same root domain exists, switch to it
 			console.log(`Tab with domain ${rootDomain} already exists, switching to it`)
 
-			// Update the active page
 			this.page = existingPage
 			existingPage.bringToFront()
 
 			// Navigate to the new URL if it's different]
-			const currentUrl = existingPage.url().replace(/\/$/, "") // Remove trailing / if present
+			const currentUrl = existingPage.url().replace(/\/$/, "")
 			if (this.getRootDomain(currentUrl) === rootDomain && currentUrl !== normalizedNewUrl) {
 				console.log(`Navigating to new URL: ${normalizedNewUrl}`)
 				console.log(`Current URL: ${currentUrl}`)

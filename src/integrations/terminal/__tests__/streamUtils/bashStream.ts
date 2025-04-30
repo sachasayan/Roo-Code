@@ -29,7 +29,6 @@ export function createBashCommandStream(command: string): CommandStream {
 			const signals: Record<string, number> = {
 				SIGTERM: 15,
 				SIGSEGV: 11,
-				// Add other signals as needed
 			}
 			const signalNum = signals[error.signal]
 			if (signalNum !== undefined) {

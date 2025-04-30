@@ -194,14 +194,14 @@ describe("GeminiHandler", () => {
 
 		it("should handle only input tokens", () => {
 			const inputTokens = 5000
-			// Added non-null assertion (!)
+
 			const expectedCost = (inputTokens / 1_000_000) * mockInfo.inputPrice!
 			expect(handler.calculateCost({ info: mockInfo, inputTokens, outputTokens: 0 })).toBeCloseTo(expectedCost)
 		})
 
 		it("should handle only output tokens", () => {
 			const outputTokens = 15000
-			// Added non-null assertion (!)
+
 			const expectedCost = (outputTokens / 1_000_000) * mockInfo.outputPrice!
 			expect(handler.calculateCost({ info: mockInfo, inputTokens: 0, outputTokens })).toBeCloseTo(expectedCost)
 		})
@@ -212,7 +212,6 @@ describe("GeminiHandler", () => {
 			const cacheWriteTokens = 5000
 			const CACHE_TTL = 5 // Match the constant in gemini.ts
 
-			// Added non-null assertions (!)
 			const expectedInputCost = (inputTokens / 1_000_000) * mockInfo.inputPrice!
 			const expectedOutputCost = (outputTokens / 1_000_000) * mockInfo.outputPrice!
 			const expectedCacheWriteCost =
@@ -229,7 +228,7 @@ describe("GeminiHandler", () => {
 			const cacheReadTokens = 8000 // Part of inputTokens read from cache
 
 			const uncachedReadTokens = inputTokens - cacheReadTokens
-			// Added non-null assertions (!)
+
 			const expectedInputCost = (uncachedReadTokens / 1_000_000) * mockInfo.inputPrice!
 			const expectedOutputCost = (outputTokens / 1_000_000) * mockInfo.outputPrice!
 			const expectedCacheReadCost = mockInfo.cacheReadsPrice! * (cacheReadTokens / 1_000_000)

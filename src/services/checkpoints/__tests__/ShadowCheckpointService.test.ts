@@ -285,12 +285,10 @@ describe.each([[RepoPerTaskCheckpointService, "RepoPerTaskCheckpointService"]])(
 				await expect(fs.readFile(testFile, "utf-8")).rejects.toThrow()
 				await expect(fs.readFile(untrackedFile, "utf-8")).rejects.toThrow()
 
-				// Restore first checkpoint.
 				await service.restoreCheckpoint(commit1!.commit)
 				expect(await fs.readFile(testFile, "utf-8")).toBe("I am tracked!")
 				expect(await fs.readFile(untrackedFile, "utf-8")).toBe("I am untracked!")
 
-				// Restore second checkpoint.
 				await service.restoreCheckpoint(commit2!.commit)
 				await expect(fs.readFile(testFile, "utf-8")).rejects.toThrow()
 				await expect(fs.readFile(untrackedFile, "utf-8")).rejects.toThrow()
@@ -367,11 +365,9 @@ describe.each([[RepoPerTaskCheckpointService, "RepoPerTaskCheckpointService"]])(
 				expect(commit1?.commit).toBeTruthy()
 				expect(await fs.readFile(newTestFile, "utf-8")).toBe("Ahoy, world!")
 
-				// Restore "Hello, world!"
 				await newService.restoreCheckpoint(newService.baseHash!)
 				expect(await fs.readFile(newTestFile, "utf-8")).toBe("Hello, world!")
 
-				// Restore "Ahoy, world!"
 				await newService.restoreCheckpoint(commit1!.commit)
 				expect(await fs.readFile(newTestFile, "utf-8")).toBe("Ahoy, world!")
 
@@ -401,7 +397,6 @@ describe.each([[RepoPerTaskCheckpointService, "RepoPerTaskCheckpointService"]])(
 				await nestedGit.addConfig("user.name", "Roo Code")
 				await nestedGit.addConfig("user.email", "support@roocode.com")
 
-				// Add a file to the nested repo.
 				const nestedFile = path.join(nestedRepoPath, "nested-file.txt")
 				await fs.writeFile(nestedFile, "Content in nested repo")
 				await nestedGit.add(".")
@@ -497,7 +492,6 @@ describe.each([[RepoPerTaskCheckpointService, "RepoPerTaskCheckpointService"]])(
 					}
 				}
 
-				// Restore the spy.
 				emitSpy.mockRestore()
 
 				// Verify the event was emitted with the correct data.
@@ -550,7 +544,6 @@ describe.each([[RepoPerTaskCheckpointService, "RepoPerTaskCheckpointService"]])(
 				const restoreHandler = jest.fn()
 				service.on("restore", restoreHandler)
 
-				// Restore the checkpoint.
 				await service.restoreCheckpoint(commit!.commit)
 
 				// Verify the event was emitted.
@@ -610,7 +603,6 @@ describe.each([[RepoPerTaskCheckpointService, "RepoPerTaskCheckpointService"]])(
 			it("allows removing event listeners", async () => {
 				const checkpointHandler = jest.fn()
 
-				// Add the listener.
 				service.on("checkpoint", checkpointHandler)
 
 				// Make a change and save a checkpoint.
@@ -621,7 +613,6 @@ describe.each([[RepoPerTaskCheckpointService, "RepoPerTaskCheckpointService"]])(
 				expect(checkpointHandler).toHaveBeenCalledTimes(1)
 				checkpointHandler.mockClear()
 
-				// Remove the listener.
 				service.off("checkpoint", checkpointHandler)
 
 				// Make another change and save a checkpoint.

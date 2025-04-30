@@ -64,7 +64,6 @@ export function getToolDescriptionsForMode(
 
 	const tools = new Set<string>()
 
-	// Add tools from mode's groups
 	config.groups.forEach((groupEntry) => {
 		const groupName = getGroupName(groupEntry)
 		const toolGroup = TOOL_GROUPS[groupName]
@@ -86,7 +85,6 @@ export function getToolDescriptionsForMode(
 		}
 	})
 
-	// Add always available tools
 	ALWAYS_AVAILABLE_TOOLS.forEach((tool) => tools.add(tool))
 
 	// Map tool descriptions for allowed tools

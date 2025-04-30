@@ -35,7 +35,6 @@ export async function applyDiffTool(
 
 	try {
 		if (block.partial) {
-			// Update GUI message
 			let toolProgressStatus
 
 			if (cline.diffStrategy && cline.diffStrategy.getProgressStatus) {

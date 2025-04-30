@@ -75,11 +75,9 @@ describe("TemperatureControl", () => {
 		const checkbox = screen.getByRole("checkbox")
 		expect(checkbox).toBeChecked()
 
-		// Update to undefined.
 		rerender(<TemperatureControl value={undefined} onChange={onChange} />)
 		expect(checkbox).not.toBeChecked()
 
-		// Update back to a value.
 		rerender(<TemperatureControl value={0.5} onChange={onChange} />)
 		expect(checkbox).toBeChecked()
 	})

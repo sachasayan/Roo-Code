@@ -81,20 +81,17 @@ export class ShellIntegrationManager {
 			const fs = require("fs")
 			const path = require("path")
 
-			// Remove .zshrc file
 			const zshrcPath = path.join(tmpDir, ".zshrc")
 			if (fs.existsSync(zshrcPath)) {
 				console.info(`${logPrefix}: Removing .zshrc file at ${zshrcPath}`)
 				fs.unlinkSync(zshrcPath)
 			}
 
-			// Remove the directory
 			if (fs.existsSync(tmpDir)) {
 				console.info(`${logPrefix}: Removing directory at ${tmpDir}`)
 				fs.rmdirSync(tmpDir)
 			}
 
-			// Remove it from the map
 			this.terminalTmpDirs.delete(terminalId)
 			console.info(`${logPrefix}: Removed terminal ${terminalId} from temporary directory map`)
 

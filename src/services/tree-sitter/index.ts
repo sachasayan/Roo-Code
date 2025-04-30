@@ -344,7 +344,6 @@ function processCaptures(captures: any[], lines: string[], language: string): st
 
 				// Only include context if it spans multiple lines
 				if (contextSpan >= getMinComponentLines()) {
-					// Add the full range first
 					const rangeKey = `${node.parent.startPosition.row}-${contextEnd}`
 					if (!processedLines.has(rangeKey)) {
 						formattedOutput += `${node.parent.startPosition.row + 1}--${contextEnd + 1} | ${lines[node.parent.startPosition.row]}\n`

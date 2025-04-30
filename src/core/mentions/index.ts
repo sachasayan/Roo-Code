@@ -269,7 +269,6 @@ export async function getLatestTerminalOutput(): Promise<string> {
 
 		return terminalContents
 	} finally {
-		// Restore original clipboard content
 		await vscode.env.clipboard.writeText(originalClipboard)
 	}
 }

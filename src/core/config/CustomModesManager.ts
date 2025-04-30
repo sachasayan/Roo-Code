@@ -72,7 +72,6 @@ export class CustomModesManager {
 			const isRoomodes = filePath.endsWith(ROOMODES_FILENAME)
 			const source = isRoomodes ? ("project" as const) : ("global" as const)
 
-			// Add source to each mode
 			return result.data.customModes.map((mode) => ({
 				...mode,
 				source,
@@ -99,7 +98,6 @@ export class CustomModesManager {
 			}
 		}
 
-		// Add non-duplicate global modes
 		for (const mode of globalModes) {
 			if (!slugs.has(mode.slug)) {
 				slugs.add(mode.slug)
@@ -200,7 +198,6 @@ export class CustomModesManager {
 			projectModes.set(mode.slug, { ...mode, source: "project" as const })
 		}
 
-		// Add global modes
 		for (const mode of settingsModes) {
 			if (!projectModes.has(mode.slug)) {
 				globalModes.set(mode.slug, { ...mode, source: "global" as const })

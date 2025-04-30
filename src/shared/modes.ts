@@ -37,7 +37,6 @@ export function doesFileMatchRegex(filePath: string, pattern: string): boolean {
 export function getToolsForMode(groups: readonly GroupEntry[]): string[] {
 	const tools = new Set<string>()
 
-	// Add tools from each group
 	groups.forEach((group) => {
 		const groupName = getGroupName(group)
 		const groupConfig = TOOL_GROUPS[groupName]
@@ -141,7 +140,6 @@ export function getAllModes(customModes?: ModeConfig[]): ModeConfig[] {
 			// Override existing mode
 			allModes[index] = customMode
 		} else {
-			// Add new mode
 			allModes.push(customMode)
 		}
 	})

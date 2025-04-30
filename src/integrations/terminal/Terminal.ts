@@ -120,7 +120,6 @@ export class Terminal extends BaseTerminal {
 			// Get copied content
 			let terminalContents = (await vscode.env.clipboard.readText()).trim()
 
-			// Restore original clipboard content
 			await vscode.env.clipboard.writeText(tempCopyBuffer)
 
 			if (tempCopyBuffer === terminalContents) {

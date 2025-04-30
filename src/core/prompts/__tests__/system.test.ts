@@ -42,7 +42,6 @@ __setMockImplementation(
 			)
 		}
 
-		// Add global instructions first
 		if (globalCustomInstructions?.trim()) {
 			sections.push(`Global Instructions:\n${globalCustomInstructions.trim()}`)
 		}
@@ -52,7 +51,6 @@ __setMockImplementation(
 			sections.push(`Mode-specific Instructions:\n${modeCustomInstructions}`)
 		}
 
-		// Add rules
 		const rules = []
 		if (mode) {
 			rules.push(`# Rules from .clinerules-${mode}:\nMock mode-specific rules`)

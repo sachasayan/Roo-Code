@@ -119,7 +119,6 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 			}
 		})
 
-		// Add incomplete page if exists
 		if (currentStateMessages.length > 0 || nextActionMessages.length > 0) {
 			result.push({
 				currentState: {

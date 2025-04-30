@@ -147,7 +147,6 @@ describe("ChatTextArea", () => {
 		it("should update when apiConfiguration changes", () => {
 			const { rerender } = render(<ChatTextArea {...defaultProps} />)
 
-			// Update apiConfiguration
 			;(useExtensionState as jest.Mock).mockReturnValue({
 				filePaths: [],
 				openedTabs: [],

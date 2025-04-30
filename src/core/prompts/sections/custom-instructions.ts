@@ -226,7 +226,6 @@ export async function addCustomInstructions(
 		)
 	}
 
-	// Add global instructions first
 	if (typeof globalCustomInstructions === "string" && globalCustomInstructions.trim()) {
 		sections.push(`Global Instructions:\n${globalCustomInstructions.trim()}`)
 	}
@@ -252,7 +251,6 @@ export async function addCustomInstructions(
 		rules.push(options.rooIgnoreInstructions)
 	}
 
-	// Add generic rules
 	const genericRuleContent = await loadRuleFiles(cwd)
 	if (genericRuleContent && genericRuleContent.trim()) {
 		rules.push(genericRuleContent.trim())

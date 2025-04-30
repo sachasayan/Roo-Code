@@ -13,7 +13,7 @@ import { experimentDefault, ExperimentId } from "@roo/shared/experiments"
 import { TelemetrySetting } from "@roo/shared/TelemetrySetting"
 
 export interface ExtensionStateContextType extends ExtensionState {
-	historyPreviewCollapsed?: boolean // Add the new state property
+	historyPreviewCollapsed?: boolean
 	didHydrateState: boolean
 	showWelcome: boolean
 	theme: any

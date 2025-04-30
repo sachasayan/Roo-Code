@@ -260,7 +260,7 @@ impl<'short, 'long: 'short> test_lifetime_definition<'short, 'long> {
     }
 }
 
-// Additional test structures
+
 // Unsafe block test
 impl test_struct_definition {
     unsafe fn test_unsafe_function(

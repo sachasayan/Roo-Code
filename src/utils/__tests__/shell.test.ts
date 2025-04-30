@@ -40,7 +40,6 @@ describe("Shell Detection Tests", () => {
 	})
 
 	afterEach(() => {
-		// Restore everything
 		Object.defineProperty(process, "platform", { value: originalPlatform })
 		process.env = originalEnv
 		vscode.workspace.getConfiguration = originalGetConfig

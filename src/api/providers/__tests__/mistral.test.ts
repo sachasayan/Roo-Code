@@ -38,7 +38,7 @@ describe("MistralHandler", () => {
 
 	beforeEach(() => {
 		mockOptions = {
-			apiModelId: "codestral-latest", // Update to match the actual model ID
+			apiModelId: "codestral-latest",
 			mistralApiKey: "test-api-key",
 			includeMaxTokens: true,
 			modelTemperature: 0,

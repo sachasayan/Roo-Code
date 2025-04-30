@@ -326,7 +326,6 @@ export function processBackspaces(input: string): string {
 		bsPos = input.indexOf("\b", pos)
 	}
 
-	// Add remaining content
 	if (pos < input.length) {
 		output += input.substring(pos)
 	}

@@ -98,7 +98,6 @@ async function testCmdCommand(
 	const mockTerminalInfo = new Terminal(1, mockTerminal, "C:\\test\\path")
 	mockTerminalInfo.running = true
 
-	// Add the terminal to the registry
 	TerminalRegistry["terminals"] = [mockTerminalInfo]
 
 	// Create a new terminal process for testing

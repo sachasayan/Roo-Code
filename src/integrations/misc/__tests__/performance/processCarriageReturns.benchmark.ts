@@ -57,7 +57,6 @@ function generateTestData(size: number, complexity: "simple" | "medium" | "compl
 				result += bar
 			}
 
-			// Add final state
 			result += `${line}[${"=".repeat(20)}] 100%\n`
 		} else {
 			// Regular line
@@ -66,20 +65,16 @@ function generateTestData(size: number, complexity: "simple" | "medium" | "compl
 
 		// Add more complex patterns for complex mode
 		if (complexity === "complex" && random() < 0.1) {
-			// Add ANSI escape sequences
 			result += `\x1b[33mWarning: Slow operation detected\r\x1b[33mWarning: Fixed\x1b[0m\n`
 
-			// Add Unicode with carriage returns
 			if (random() < 0.5) {
 				result += `处理中...\r已完成！\n`
 			}
 
-			// Add partial line overwrites
 			if (random() < 0.5) {
 				result += `Very long line with lots of text...\rShort\n`
 			}
 
-			// Add repeating patterns for RLE
 			if (random() < 0.5) {
 				result += `${"#".repeat(100)}\n`
 			}

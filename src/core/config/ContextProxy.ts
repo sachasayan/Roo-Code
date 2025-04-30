@@ -137,7 +137,6 @@ export class ContextProxy {
 	}
 
 	storeSecret(key: SecretStateKey, value?: string) {
-		// Update cache.
 		this.secretCache[key] = value
 
 		// Write directly to context.

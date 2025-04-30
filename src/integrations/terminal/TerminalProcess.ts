@@ -314,7 +314,6 @@ export class TerminalProcess extends BaseTerminalProcess {
 			}
 		}
 
-		// Update index and slice output
 		this.lastRetrievedIndex += endIndex
 		outputToProcess = outputToProcess.slice(0, endIndex)
 

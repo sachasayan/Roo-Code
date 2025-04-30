@@ -36,7 +36,6 @@ export async function executeRipgrep({
 				try {
 					const relativePath = path.relative(workspacePath, line)
 
-					// Add the file itself.
 					fileResults.push({ path: relativePath, type: "file", label: path.basename(relativePath) })
 
 					// Extract and store all parent directory paths.

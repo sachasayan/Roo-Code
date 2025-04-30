@@ -557,7 +557,6 @@ export class McpHub {
 			connection.server.resources = await this.fetchResourcesList(name, source)
 			connection.server.resourceTemplates = await this.fetchResourceTemplatesList(name, source)
 		} catch (error) {
-			// Update status with error
 			const connection = this.findConnection(name, source)
 			if (connection) {
 				connection.server.status = "disconnected"
@@ -730,7 +729,6 @@ export class McpHub {
 			}
 		}
 
-		// Update or add servers
 		for (const [name, config] of Object.entries(newServers)) {
 			// Only consider connections that match the current source
 			const currentConnection = this.findConnection(name, source)
@@ -939,7 +937,6 @@ export class McpHub {
 			// Update the server config in the appropriate file
 			await this.updateServerConfig(serverName, { disabled }, serverSource)
 
-			// Update the connection object
 			if (connection) {
 				try {
 					connection.server.disabled = disabled
@@ -1100,7 +1097,6 @@ export class McpHub {
 				config.mcpServers = {}
 			}
 
-			// Remove the server from the settings
 			if (config.mcpServers[serverName]) {
 				delete config.mcpServers[serverName]
 
@@ -1243,10 +1239,8 @@ export class McpHub {
 			const toolIndex = alwaysAllow.indexOf(toolName)
 
 			if (shouldAllow && toolIndex === -1) {
-				// Add tool to always allow list
 				alwaysAllow.push(toolName)
 			} else if (!shouldAllow && toolIndex !== -1) {
-				// Remove tool from always allow list
 				alwaysAllow.splice(toolIndex, 1)
 			}
 

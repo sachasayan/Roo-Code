@@ -923,7 +923,6 @@ describe("ClineProvider", () => {
 			setModeConfig: jest.fn(),
 		} as any
 
-		// Update API configuration
 		await messageHandler({
 			type: "apiConfiguration",
 			apiConfiguration: { apiProvider: "anthropic" },
@@ -2133,7 +2132,6 @@ describe("getTelemetryProperties", () => {
 	})
 
 	test("includes model ID from current Cline instance if available", async () => {
-		// Add mock Cline to stack
 		await provider.addClineToStack(mockCline)
 
 		const properties = await provider.getTelemetryProperties()

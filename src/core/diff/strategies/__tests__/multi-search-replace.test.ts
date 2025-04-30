@@ -273,7 +273,7 @@ function test() {
 }
 =======
 function test() {
-\t// Add comment
+\t
 \treturn false;
 }
 >>>>>>> REPLACE`
@@ -364,7 +364,7 @@ function hello() {
     }
 =======
     getValue() {
-        // Add logging
+        
         console.log("Getting value")
         return this.value
     }
@@ -1617,7 +1617,7 @@ function five() {
 			it("should preserve indentation when deleting nested code", async () => {
 				const originalContent = `function outer() {
     if (true) {
-        // Remove this
+        
         console.log("test");
         // And this
     }
@@ -1625,7 +1625,7 @@ function five() {
 }`
 				const diffContent = `test.ts
 <<<<<<< SEARCH
-        // Remove this
+        
         console.log("test");
         // And this
 =======
@@ -2088,7 +2088,7 @@ function processData(data) {
 }
 =======
 function processData(data) {
-    // Add logging
+    
     console.log("Processing data...");
     return data.map(x => x * 2);
 }
@@ -2108,7 +2108,7 @@ function unrelatedStuff() {
 
 // Another data processor
 function processData(data) {
-    // Add logging
+    
     console.log("Processing data...");
     return data.map(x => x * 2);
 }

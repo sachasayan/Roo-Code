@@ -28,7 +28,7 @@ describe("RooTips Component", () => {
 	afterEach(() => {
 		jest.runOnlyPendingTimers()
 		jest.useRealTimers()
-		// Restore Math.random if mocked
+
 		// jest.spyOn(global.Math, 'random').mockRestore();
 	})
 

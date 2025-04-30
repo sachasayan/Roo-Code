@@ -63,7 +63,6 @@ export function readLines(filepath: string, endLine?: number, startLine?: number
 
 		// Process data chunks directly
 		input.on("data", (chunk) => {
-			// Add chunk to buffer
 			buffer += chunk.toString()
 
 			let pos = 0

@@ -152,7 +152,6 @@ describe("TerminalProcess", () => {
 			// Verify sendText was called with the command
 			expect(noShellTerminal.sendText).toHaveBeenCalledWith("test command", true)
 
-			// Restore the original console.warn
 			consoleWarnSpy.mockRestore()
 		})
 

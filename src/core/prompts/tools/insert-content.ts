@@ -16,7 +16,7 @@ Example for inserting imports at start of file:
 <path>src/utils.ts</path>
 <line>1</line>
 <content>
-// Add imports at start of file
+
 import { sum } from './math';
 </content>
 </insert_content>

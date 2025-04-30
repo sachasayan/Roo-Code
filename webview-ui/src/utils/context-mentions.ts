@@ -89,7 +89,7 @@ export enum ContextMenuOptionType {
 	URL = "url",
 	Git = "git",
 	NoResults = "noResults",
-	Mode = "mode", // Add mode type
+	Mode = "mode",
 }
 
 export interface ContextMenuQueryItem {

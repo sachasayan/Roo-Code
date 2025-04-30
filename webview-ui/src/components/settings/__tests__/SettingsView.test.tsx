@@ -316,7 +316,6 @@ describe("SettingsView - Allowed Commands", () => {
 		const executeCheckbox = screen.getByTestId("always-allow-execute-toggle")
 		fireEvent.click(executeCheckbox)
 
-		// Add a new command
 		const input = screen.getByTestId("command-input")
 		fireEvent.change(input, { target: { value: "npm test" } })
 
@@ -340,13 +339,11 @@ describe("SettingsView - Allowed Commands", () => {
 		const executeCheckbox = screen.getByTestId("always-allow-execute-toggle")
 		fireEvent.click(executeCheckbox)
 
-		// Add a command
 		const input = screen.getByTestId("command-input")
 		fireEvent.change(input, { target: { value: "npm test" } })
 		const addButton = screen.getByTestId("add-command-button")
 		fireEvent.click(addButton)
 
-		// Remove the command
 		const removeButton = screen.getByTestId("remove-command-0")
 		fireEvent.click(removeButton)
 
@@ -367,7 +364,6 @@ describe("SettingsView - Allowed Commands", () => {
 		const executeCheckbox = screen.getByTestId("always-allow-execute-toggle")
 		fireEvent.click(executeCheckbox)
 
-		// Add a command twice
 		const input = screen.getByTestId("command-input")
 		const addButton = screen.getByTestId("add-command-button")
 
@@ -391,7 +387,6 @@ describe("SettingsView - Allowed Commands", () => {
 		const executeCheckbox = screen.getByTestId("always-allow-execute-toggle")
 		fireEvent.click(executeCheckbox)
 
-		// Add a command
 		const input = screen.getByTestId("command-input")
 		fireEvent.change(input, { target: { value: "npm test" } })
 		const addButton = screen.getByTestId("add-command-button")

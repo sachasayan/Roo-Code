@@ -24,7 +24,6 @@ const mockExecuteCommand = jest.fn().mockImplementation(() => {
 // Mock the module
 jest.mock("../executeCommandTool")
 
-// Import after mocking
 import { executeCommandTool } from "../executeCommandTool"
 
 // Now manually restore and mock the functions

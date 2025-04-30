@@ -29,7 +29,6 @@ describe("loadSystemPromptFile", () => {
 		error.code = "ENOENT"
 		mockedReadFile.mockRejectedValue(error)
 
-		// Added mockMode argument
 		const result = await loadSystemPromptFile(mockCwd, mockMode, mockVariables)
 
 		expect(result).toBe("")
@@ -53,7 +52,6 @@ describe("loadSystemPromptFile", () => {
 	it("should return an empty string if the file content is empty", async () => {
 		mockedReadFile.mockResolvedValue("")
 
-		// Added mockMode argument
 		const result = await loadSystemPromptFile(mockCwd, mockMode, mockVariables)
 
 		expect(result).toBe("")
@@ -66,7 +64,6 @@ describe("loadSystemPromptFile", () => {
 		const template = "Workspace is: {{workspace}}"
 		mockedReadFile.mockResolvedValue(template)
 
-		// Added mockMode argument
 		const result = await loadSystemPromptFile(mockCwd, mockMode, mockVariables)
 
 		expect(result).toBe("Workspace is: /path/to/workspace")
@@ -79,7 +76,6 @@ describe("loadSystemPromptFile", () => {
 		const template = "Path: {{workspace}}/{{workspace}}"
 		mockedReadFile.mockResolvedValue(template)
 
-		// Added mockMode argument
 		const result = await loadSystemPromptFile(mockCwd, mockMode, mockVariables)
 
 		expect(result).toBe("Path: /path/to/workspace//path/to/workspace")
@@ -87,12 +83,10 @@ describe("loadSystemPromptFile", () => {
 		expect(mockedReadFile).toHaveBeenCalledWith(expectedFilePath, "utf-8")
 	})
 
-	// Updated test for mixed used/unused
 	it("should handle mixed used workspace and unused variables", async () => {
 		const template = "Workspace: {{workspace}}, Unused: {{unusedVar}}, Another: {{another}}"
 		mockedReadFile.mockResolvedValue(template)
 
-		// Added mockMode argument
 		const result = await loadSystemPromptFile(mockCwd, mockMode, mockVariables)
 
 		// Unused variables should remain untouched
@@ -106,7 +100,6 @@ describe("loadSystemPromptFile", () => {
 		const template = "Workspace: {{workspace}}, Missing: {{missingPlaceholder}}"
 		mockedReadFile.mockResolvedValue(template)
 
-		// Added mockMode argument
 		const result = await loadSystemPromptFile(mockCwd, mockMode, mockVariables)
 
 		expect(result).toBe("Workspace: /path/to/workspace, Missing: {{missingPlaceholder}}")
@@ -121,7 +114,6 @@ describe("loadSystemPromptFile", () => {
 		const template = "This is a static prompt."
 		mockedReadFile.mockResolvedValue(template)
 
-		// Added mockMode argument
 		const result = await loadSystemPromptFile(mockCwd, mockMode, mockVariables)
 
 		expect(result).toBe("This is a static prompt.")

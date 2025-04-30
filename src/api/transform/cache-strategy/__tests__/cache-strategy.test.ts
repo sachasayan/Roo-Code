@@ -1050,7 +1050,6 @@ describe("Cache Strategy", () => {
 
 					// No new cache point should be added for the small addition
 				} finally {
-					// Restore original console.log
 					console.log = originalConsoleLog
 				}
 			})
