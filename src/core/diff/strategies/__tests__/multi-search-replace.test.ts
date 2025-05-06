@@ -273,7 +273,7 @@ function test() {
 }
 =======
 function test() {
-\t
+\t// Add comment
 \treturn false;
 }
 >>>>>>> REPLACE`
