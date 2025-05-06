@@ -42,28 +42,20 @@ const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 
 	return (
 		<div className="flex flex-col justify-center absolute top-0 bottom-0 left-0 right-0 z-50 p-10 bg-black/50">
-			<div
-				style={{
-					backgroundColor: "var(--vscode-editor-background)",
-					borderRadius: "3px",
-					padding: "12px 16px",
-					margin: "5px 15px 5px 15px",
-					position: "relative",
-					flexShrink: 0,
-				}}>
+			<div className="bg-vscode-editor-background rounded-[3px] p-[12px_16px] m-[5px_15px] relative flex-shrink-0">
 				<VSCodeButton
 					appearance="icon"
 					onClick={hideAnnouncement}
 					title={t("chat:announcement.hideButton")}
-					style={{ position: "absolute", top: "8px", right: "8px" }}>
+					className="absolute top-2 right-2">
 					<span className="codicon codicon-close"></span>
 				</VSCodeButton>
-				<h2 style={{ margin: "0 0 8px" }}>{t("chat:announcement.title")}</h2>
+				<h2 className="m-0 mb-2">{t("chat:announcement.title")}</h2>
 
-				<p style={{ margin: "5px 0px" }}>{t("chat:announcement.description")}</p>
+				<p className="my-[5px]">{t("chat:announcement.description")}</p>
 
-				<h3 style={{ margin: "12px 0 5px", fontSize: "14px" }}>{t("chat:announcement.whatsNew")}</h3>
-				<ul style={{ margin: "5px 0" }}>
+				<h3 className="mt-3 mb-[5px] text-sm">{t("chat:announcement.whatsNew")}</h3>
+				<ul className="my-[5px]">
 					<li>
 						•{" "}
 						<Trans
@@ -96,7 +88,7 @@ const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 					</li>
 				</ul>
 
-				<p style={{ margin: "10px 0px 0px" }}>
+				<p className="mt-2.5 mb-0">
 					<Trans
 						i18nKey="chat:announcement.detailsDiscussLinks"
 						components={{
