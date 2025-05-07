@@ -21,6 +21,8 @@ type ProviderSettings = {
 				| "human-relay"
 				| "fake-ai"
 				| "xai"
+				| "groq"
+				| "chutes"
 		  )
 		| undefined
 	apiModelId?: string | undefined
@@ -40,7 +42,6 @@ type ProviderSettings = {
 	awsRegion?: string | undefined
 	awsUseCrossRegionInference?: boolean | undefined
 	awsUsePromptCache?: boolean | undefined
-	awspromptCacheId?: string | undefined
 	awsProfile?: string | undefined
 	awsUseProfile?: boolean | undefined
 	awsCustomArn?: string | undefined
@@ -50,7 +51,6 @@ type ProviderSettings = {
 	vertexRegion?: string | undefined
 	openAiBaseUrl?: string | undefined
 	openAiApiKey?: string | undefined
-	openAiHostHeader?: string | undefined
 	openAiLegacyFormat?: boolean | undefined
 	openAiR1FormatEnabled?: boolean | undefined
 	openAiModelId?: string | undefined
@@ -88,6 +88,12 @@ type ProviderSettings = {
 	azureApiVersion?: string | undefined
 	openAiStreamingEnabled?: boolean | undefined
 	enableReasoningEffort?: boolean | undefined
+	openAiHostHeader?: string | undefined
+	openAiHeaders?:
+		| {
+				[x: string]: string
+		  }
+		| undefined
 	ollamaModelId?: string | undefined
 	ollamaBaseUrl?: string | undefined
 	vsCodeLmModelSelector?:
@@ -105,6 +111,7 @@ type ProviderSettings = {
 	geminiApiKey?: string | undefined
 	googleGeminiBaseUrl?: string | undefined
 	openAiNativeApiKey?: string | undefined
+	openAiNativeBaseUrl?: string | undefined
 	mistralApiKey?: string | undefined
 	mistralCodestralUrl?: string | undefined
 	deepSeekBaseUrl?: string | undefined
@@ -114,11 +121,13 @@ type ProviderSettings = {
 	requestyApiKey?: string | undefined
 	requestyModelId?: string | undefined
 	xaiApiKey?: string | undefined
+	groqApiKey?: string | undefined
+	chutesApiKey?: string | undefined
 	modelMaxTokens?: number | undefined
 	modelMaxThinkingTokens?: number | undefined
 	includeMaxTokens?: boolean | undefined
 	reasoningEffort?: ("low" | "medium" | "high") | undefined
-	promptCachingEnabled?: boolean | undefined
+	promptCachingDisabled?: boolean | undefined
 	diffEnabled?: boolean | undefined
 	fuzzyMatchThreshold?: number | undefined
 	modelTemperature?: (number | null) | undefined
@@ -152,6 +161,8 @@ type GlobalSettings = {
 							| "human-relay"
 							| "fake-ai"
 							| "xai"
+							| "groq"
+							| "chutes"
 					  )
 					| undefined
 		  }[]
@@ -236,6 +247,7 @@ type GlobalSettings = {
 				| "it"
 				| "ja"
 				| "ko"
+				| "nl"
 				| "pl"
 				| "pt-BR"
 				| "ru"

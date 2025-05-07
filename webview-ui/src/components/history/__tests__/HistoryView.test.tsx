@@ -210,5 +210,195 @@ describe("HistoryView", () => {
 		// Find and click an item (using the mock structure)
 		const oldestOption = screen.getByTestId("history-sort-item-oldest") // Use the actual test ID from the component
 		fireEvent.click(oldestOption)
+
+		// Test changing sort options
+		const oldestRadio = within(radioGroup).getByTestId("radio-oldest")
+		fireEvent.click(oldestRadio)
+
+		// Wait for oldest radio to be checked
+		const checkedOldestRadio = within(radioGroup).getByTestId("radio-oldest")
+		expect(checkedOldestRadio).toBeInTheDocument()
+
+		const mostExpensiveRadio = within(radioGroup).getByTestId("radio-most-expensive")
+		fireEvent.click(mostExpensiveRadio)
+
+		// Wait for most expensive radio to be checked
+		const checkedExpensiveRadio = within(radioGroup).getByTestId("radio-most-expensive")
+		expect(checkedExpensiveRadio).toBeInTheDocument()
+	})
+
+	it("handles task selection", () => {
+		const onDone = jest.fn()
+		render(<HistoryView onDone={onDone} />)
+
+		// Click on first task
+		fireEvent.click(screen.getByText("Test task 1"))
+
+		// Verify vscode message was sent
+		expect(vscode.postMessage).toHaveBeenCalledWith({
+			type: "showTaskWithId",
+			text: "1",
+		})
+	})
+
+	it("handles selection mode clicks", async () => {
+		const onDone = jest.fn()
+		render(<HistoryView onDone={onDone} />)
+
+		// Go to selection mode
+		fireEvent.click(screen.getByTestId("toggle-selection-mode-button"))
+
+		const taskContainer = screen.getByTestId("task-item-1")
+
+		// Click anywhere in the task item
+		fireEvent.click(taskContainer)
+
+		// Check the box instead of sending a message to open the task
+		expect(within(taskContainer).getByRole("checkbox")).toBeChecked()
+		expect(vscode.postMessage).not.toHaveBeenCalled()
+	})
+
+	describe("task deletion", () => {
+		it("shows confirmation dialog on regular click", () => {
+			const onDone = jest.fn()
+			render(<HistoryView onDone={onDone} />)
+
+			// Find and hover over first task
+			const taskContainer = screen.getByTestId("virtuoso-item-1")
+			fireEvent.mouseEnter(taskContainer)
+
+			// Click delete button to open confirmation dialog
+			const deleteButton = within(taskContainer).getByTestId("delete-task-button")
+			fireEvent.click(deleteButton)
+
+			// Verify dialog is shown
+			const dialog = screen.getByRole("alertdialog")
+			expect(dialog).toBeInTheDocument()
+
+			// Find and click the confirm delete button in the dialog
+			const confirmDeleteButton = within(dialog).getByRole("button", { name: /delete/i })
+			fireEvent.click(confirmDeleteButton)
+
+			// Verify vscode message was sent
+			expect(vscode.postMessage).toHaveBeenCalledWith({
+				type: "deleteTaskWithId",
+				text: "1",
+			})
+		})
+
+		it("deletes immediately on shift-click without confirmation", () => {
+			const onDone = jest.fn()
+			render(<HistoryView onDone={onDone} />)
+
+			// Find and hover over first task
+			const taskContainer = screen.getByTestId("virtuoso-item-1")
+			fireEvent.mouseEnter(taskContainer)
+
+			// Shift-click delete button
+			const deleteButton = within(taskContainer).getByTestId("delete-task-button")
+			fireEvent.click(deleteButton, { shiftKey: true })
+
+			// Verify no dialog is shown
+			expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument()
+
+			// Verify vscode message was sent
+			expect(vscode.postMessage).toHaveBeenCalledWith({
+				type: "deleteTaskWithId",
+				text: "1",
+			})
+		})
+	})
+
+	it("handles task copying", async () => {
+		// Setup clipboard mock that resolves immediately
+		const mockClipboard = {
+			writeText: jest.fn().mockResolvedValue(undefined),
+		}
+		Object.assign(navigator, { clipboard: mockClipboard })
+
+		const onDone = jest.fn()
+		render(<HistoryView onDone={onDone} />)
+
+		// Find and hover over first task
+		const taskContainer = screen.getByTestId("virtuoso-item-1")
+		fireEvent.mouseEnter(taskContainer)
+
+		const copyButton = within(taskContainer).getByTestId("copy-prompt-button")
+
+		// Click the copy button and wait for clipboard operation
+		await act(async () => {
+			fireEvent.click(copyButton)
+			// Let the clipboard Promise resolve
+			await Promise.resolve()
+			// Let React process the first state update
+			await Promise.resolve()
+		})
+
+		// Verify clipboard was called
+		expect(navigator.clipboard.writeText).toHaveBeenCalledWith("Test task 1")
+
+		// Advance timer to trigger the setTimeout for modal disappearance
+		act(() => {
+			jest.advanceTimersByTime(2000)
+		})
+
+		// Verify modal is gone
+		expect(screen.queryByText("Prompt Copied to Clipboard")).not.toBeInTheDocument()
+	})
+
+	it("formats dates correctly", () => {
+		const onDone = jest.fn()
+		render(<HistoryView onDone={onDone} />)
+
+		// Find first task container and check date format
+		const taskContainer = screen.getByTestId("virtuoso-item-1")
+		const dateElement = within(taskContainer).getByText((content) => {
+			return content.includes("FEBRUARY 16") && content.includes("12:00 AM")
+		})
+		expect(dateElement).toBeInTheDocument()
+	})
+
+	it("displays token counts correctly", () => {
+		const onDone = jest.fn()
+		render(<HistoryView onDone={onDone} />)
+
+		// Find first task container
+		const taskContainer = screen.getByTestId("virtuoso-item-1")
+
+		// Find token counts within the task container
+		const tokensContainer = within(taskContainer).getByTestId("tokens-container")
+		expect(within(tokensContainer).getByTestId("tokens-in")).toHaveTextContent("100")
+		expect(within(tokensContainer).getByTestId("tokens-out")).toHaveTextContent("50")
+	})
+
+	it("displays cache information when available", () => {
+		const onDone = jest.fn()
+		render(<HistoryView onDone={onDone} />)
+
+		// Find second task container
+		const taskContainer = screen.getByTestId("virtuoso-item-2")
+
+		// Find cache info within the task container
+		const cacheContainer = within(taskContainer).getByTestId("cache-container")
+		expect(within(cacheContainer).getByTestId("cache-writes")).toHaveTextContent("+50")
+		expect(within(cacheContainer).getByTestId("cache-reads")).toHaveTextContent("25")
+	})
+
+	it("handles export functionality", () => {
+		const onDone = jest.fn()
+		render(<HistoryView onDone={onDone} />)
+
+		// Find and hover over second task
+		const taskContainer = screen.getByTestId("virtuoso-item-2")
+		fireEvent.mouseEnter(taskContainer)
+
+		const exportButton = within(taskContainer).getByTestId("export")
+		fireEvent.click(exportButton)
+
+		// Verify vscode message was sent
+		expect(vscode.postMessage).toHaveBeenCalledWith({
+			type: "exportTaskWithId",
+			text: "2",
+		})
 	})
 })
