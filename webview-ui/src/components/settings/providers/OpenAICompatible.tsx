@@ -472,19 +472,6 @@ export const OpenAICompatible = ({ apiConfiguration, setApiConfigurationField }:
 							<VSCodeTextField
 								value={apiConfiguration?.openAiCustomModelInfo?.cacheReadsPrice?.toString() ?? "0"}
 								type="text"
-								// style={{
-								// 	borderColor: (() => {
-								// 		const value = apiConfiguration?.openAiCustomModelInfo?.cacheReadsPrice
-								//
-								// 		if (!value && value !== 0) {
-								// 			return "var(--vscode-input-border)"
-								// 		}
-								//
-								// 		return value >= 0
-								// 			? "var(--vscode-charts-green)"
-								// 			: "var(--vscode-errorForeground)"
-								// 	})(),
-								// }}
 								className={cn(
 									"w-full border", // Added base 'border' class
 									(() => {
@@ -504,9 +491,7 @@ export const OpenAICompatible = ({ apiConfiguration, setApiConfigurationField }:
 										cacheReadsPrice: isNaN(parsed) ? 0 : parsed,
 									}
 								})}
-								placeholder={t("settings:placeholders.numbers.inputPrice")}
-								/* className="w-full" */
-							>
+								placeholder={t("settings:placeholders.numbers.inputPrice")}>
 								<div className="flex items-center gap-1">
 									<span className="font-medium">
 										{t("settings:providers.customModel.pricing.cacheReads.label")}
@@ -514,7 +499,6 @@ export const OpenAICompatible = ({ apiConfiguration, setApiConfigurationField }:
 									<i
 										className="codicon codicon-info text-vscode-descriptionForeground text-xs"
 										title={t("settings:providers.customModel.pricing.cacheReads.description")}
-										// style={{ fontSize: "12px" }}
 									/>
 								</div>
 							</VSCodeTextField>
@@ -523,19 +507,6 @@ export const OpenAICompatible = ({ apiConfiguration, setApiConfigurationField }:
 							<VSCodeTextField
 								value={apiConfiguration?.openAiCustomModelInfo?.cacheWritesPrice?.toString() ?? "0"}
 								type="text"
-								// style={{
-								// 	borderColor: (() => {
-								// 		const value = apiConfiguration?.openAiCustomModelInfo?.cacheWritesPrice
-								//
-								// 		if (!value && value !== 0) {
-								// 			return "var(--vscode-input-border)"
-								// 		}
-								//
-								// 		return value >= 0
-								// 			? "var(--vscode-charts-green)"
-								// 			: "var(--vscode-errorForeground)"
-								// 	})(),
-								// }}
 								onChange={handleInputChange("openAiCustomModelInfo", (e) => {
 									const value = (e.target as HTMLInputElement).value
 									const parsed = parseFloat(value)
@@ -547,7 +518,7 @@ export const OpenAICompatible = ({ apiConfiguration, setApiConfigurationField }:
 								})}
 								placeholder={t("settings:placeholders.numbers.cacheWritePrice")}
 								className={cn(
-									"w-full border", // Added base 'border' class
+									"w-full border",
 									(() => {
 										const value = apiConfiguration?.openAiCustomModelInfo?.cacheWritesPrice
 										if (value === undefined || value === null) return "border-vscode-input-border"
@@ -563,7 +534,6 @@ export const OpenAICompatible = ({ apiConfiguration, setApiConfigurationField }:
 									<i
 										className="codicon codicon-info text-vscode-descriptionForeground text-xs"
 										title={t("settings:providers.customModel.pricing.cacheWrites.description")}
-										// style={{ fontSize: "12px" }}
 									/>
 								</div>
 							</VSCodeTextField>

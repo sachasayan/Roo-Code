@@ -145,17 +145,6 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 		{ value: 3600, label: t("mcp:networkTimeout.options.60minutes") },
 	]
 
-	// const getStatusColor = () => {
-	// 	switch (server.status) {
-	// 		case "connected":
-	// 			return "var(--vscode-testing-iconPassed)"
-	// 		case "connecting":
-	// 			return "var(--vscode-charts-yellow)"
-	// 		case "disconnected":
-	// 			return "var(--vscode-testing-iconFailed)"
-	// 	}
-	// }
-
 	const handleRowClick = () => {
 		if (server.status === "connected") {
 			setIsExpanded(!isExpanded)
@@ -364,16 +353,7 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 				)
 			) : (
 				<div className="text-[13px] bg-vscode-textCodeBlock-background rounded-b-[4px] w-full">
-					<div
-						className="text-vscode-testing-iconFailed mb-[8px] px-[10px] overflow-wrap-break-word break-words"
-						// style={{
-						// 	color: "var(--vscode-testing-iconFailed)",
-						// 	marginBottom: "8px",
-						// 	padding: "0 10px",
-						// 	overflowWrap: "break-word",
-						// 	wordBreak: "break-word",
-						// }}
-					>
+					<div className="text-vscode-testing-iconFailed mb-[8px] px-[10px] overflow-wrap-break-word break-words">
 						{server.error &&
 							server.error.split("\n").map((item, index) => (
 								<React.Fragment key={index}>
@@ -386,9 +366,7 @@ const ServerRow = ({ server, alwaysAllowMcp }: { server: McpServer; alwaysAllowM
 						appearance="secondary"
 						onClick={handleRestart}
 						disabled={server.status === "connecting"}
-						className="w-[calc(100%-20px)] mx-[10px] mb-[10px]"
-						// style={{ width: "calc(100% - 20px)", margin: "0 10px 10px 10px" }}
-					>
+						className="w-[calc(100%-20px)] mx-[10px] mb-[10px]">
 						{server.status === "connecting" ? "Retrying..." : "Retry Connection"}
 					</VSCodeButton>
 				</div>
