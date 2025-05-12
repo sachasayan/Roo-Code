@@ -139,6 +139,8 @@
 		transparent
 	);
 
+	--color-vscode-textCodeBlock-background: var(--vscode-textCodeBlock-background);
+
 	/* Custom color for CodeBlock background with fallbacks */
 	--color-vscode-code-block-background: var(
 		--vscode-editor-background,
