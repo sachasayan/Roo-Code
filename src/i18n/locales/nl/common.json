@@ -23,7 +23,9 @@
 		"this_and_subsequent": "Dit en alle volgende berichten"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "handleiding voor probleemoplossing",
+		"shellIntegration": {
+			"troubleshootingGuide": "handleiding voor probleemoplossing"
+		},
 		"copyAsMarkdown": "Kopiëren als markdown",
 		"response": "Antwoord",
 		"arguments": "Argumenten",

@@ -27,7 +27,9 @@
 		"this_and_subsequent": "Aquest i tots els missatges posteriors"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "guia de resolució de problemes",
+		"shellIntegration": {
+			"troubleshootingGuide": "guia de resolució de problemes"
+		},
 		"copyAsMarkdown": "Copiar com a markdown",
 		"response": "Resposta",
 		"arguments": "Arguments",

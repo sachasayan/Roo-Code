@@ -23,7 +23,9 @@
 		"this_and_subsequent": "これ以降のすべてのメッセージ"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "トラブルシューティングガイド",
+		"shellIntegration": {
+			"troubleshootingGuide": "トラブルシューティングガイド"
+		},
 		"copyAsMarkdown": "Markdownとしてコピー",
 		"response": "応答",
 		"arguments": "引数",

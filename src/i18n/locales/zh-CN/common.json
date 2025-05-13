@@ -23,7 +23,9 @@
 		"this_and_subsequent": "此消息及所有后续消息"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "问题排查指南",
+		"shellIntegration": {
+			"troubleshootingGuide": "问题排查指南"
+		},
 		"copyAsMarkdown": "复制为 Markdown",
 		"response": "响应",
 		"arguments": "参数",

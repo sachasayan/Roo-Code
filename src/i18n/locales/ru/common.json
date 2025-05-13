@@ -23,7 +23,9 @@
 		"this_and_subsequent": "Это и все последующие сообщения"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "руководство по устранению неполадок",
+		"shellIntegration": {
+			"troubleshootingGuide": "руководство по устранению неполадок"
+		},
 		"copyAsMarkdown": "Копировать как markdown",
 		"response": "Ответ",
 		"arguments": "Аргументы",

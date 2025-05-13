@@ -23,7 +23,9 @@
 		"this_and_subsequent": "這則訊息及所有後續訊息"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "疑難排解指南",
+		"shellIntegration": {
+			"troubleshootingGuide": "疑難排解指南"
+		},
 		"copyAsMarkdown": "複製為 Markdown",
 		"response": "回應",
 		"arguments": "引數",

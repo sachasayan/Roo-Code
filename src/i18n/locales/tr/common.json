@@ -23,7 +23,9 @@
 		"this_and_subsequent": "Bu ve sonraki tüm mesajları"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "sorun giderme kılavuzu",
+		"shellIntegration": {
+			"troubleshootingGuide": "sorun giderme kılavuzu"
+		},
 		"copyAsMarkdown": "Markdown olarak kopyala",
 		"response": "Yanıt",
 		"arguments": "Argümanlar",

@@ -23,7 +23,9 @@
 		"this_and_subsequent": "यह और सभी बाद के संदेश"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "समस्या निवारण गाइड",
+		"shellIntegration": {
+			"troubleshootingGuide": "समस्या निवारण गाइड"
+		},
 		"copyAsMarkdown": "मार्कडाउन के रूप में कॉपी करें",
 		"response": "प्रतिक्रिया",
 		"arguments": "तर्क",

@@ -23,7 +23,9 @@
 		"this_and_subsequent": "이 메시지와 모든 후속 메시지"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "문제 해결 가이드",
+		"shellIntegration": {
+			"troubleshootingGuide": "문제 해결 가이드"
+		},
 		"copyAsMarkdown": "마크다운으로 복사",
 		"response": "응답",
 		"arguments": "인수",

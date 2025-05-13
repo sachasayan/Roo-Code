@@ -23,7 +23,9 @@
 		"this_and_subsequent": "Tę i wszystkie kolejne wiadomości"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "przewodnik rozwiązywania problemów",
+		"shellIntegration": {
+			"troubleshootingGuide": "przewodnik rozwiązywania problemów"
+		},
 		"copyAsMarkdown": "Kopiuj jako markdown",
 		"response": "Odpowiedź",
 		"arguments": "Argumenty",

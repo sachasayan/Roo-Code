@@ -23,7 +23,9 @@
 		"this_and_subsequent": "Tin nhắn này và tất cả tin nhắn tiếp theo"
 	},
 	"chat": {
-		"shellIntegration.troubleshootingGuide": "hướng dẫn khắc phục sự cố",
+		"shellIntegration": {
+			"troubleshootingGuide": "hướng dẫn khắc phục sự cố"
+		},
 		"copyAsMarkdown": "Sao chép dưới dạng markdown",
 		"response": "Phản hồi",
 		"arguments": "Đối số",
